@@ -1,6 +1,8 @@
 ---
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
+import { en } from "../i18n/en";
+import { fr } from "../i18n/fr";
 import "../styles/global.css";
 
 type Props = {
@@ -16,6 +18,7 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const translations = { fr, en };
 ---
 
 <!doctype html>
@@ -38,10 +41,93 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content="/assets/logo-tudor-pop.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      (() => {
+        try {
+          const theme = localStorage.getItem("tp-theme") || "light";
+          const lang = localStorage.getItem("tp-lang") || "fr";
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.lang = lang;
+        } catch {
+          document.documentElement.dataset.theme = "light";
+          document.documentElement.lang = "fr";
+        }
+      })();
+    </script>
   </head>
   <body class="antialiased">
     {shell && <Header />}
     <slot />
     {shell && <Footer />}
+    <script is:inline type="application/json" id="tp-i18n" set:html={JSON.stringify(translations)} />
+    <script is:inline>
+      (() => {
+        const getPath = (obj, path) => path.split(".").reduce((value, key) => value?.[key], obj);
+        const readData = () => {
+          const node = document.getElementById("tp-i18n");
+          if (!node?.textContent) return {};
+          try {
+            return JSON.parse(node.textContent);
+          } catch {
+            return {};
+          }
+        };
+
+        const translations = readData();
+
+        const applyLanguage = (lang) => {
+          const dictionary = translations[lang] || translations.fr || {};
+          document.documentElement.lang = lang;
+          document.querySelectorAll("[data-i18n]").forEach((node) => {
+            const value = getPath(dictionary, node.dataset.i18n || "");
+            if (typeof value === "string") node.textContent = value;
+          });
+          document.querySelectorAll("[data-i18n-list]").forEach((node) => {
+            const values = getPath(dictionary, node.dataset.i18nList || "");
+            if (Array.isArray(values)) {
+              node.querySelectorAll("[data-i18n-item]").forEach((item, index) => {
+                if (typeof values[index] === "string") item.textContent = values[index];
+              });
+            }
+          });
+          document.querySelectorAll("[data-lang-label]").forEach((node) => {
+            node.textContent = getPath(dictionary, "ui.lang") || (lang === "fr" ? "EN" : "FR");
+          });
+        };
+
+        const applyTheme = (theme) => {
+          document.documentElement.dataset.theme = theme;
+          const lang = localStorage.getItem("tp-lang") || "fr";
+          const dictionary = translations[lang] || translations.fr || {};
+          document.querySelectorAll("[data-theme-label]").forEach((node) => {
+            node.textContent = theme === "dark"
+              ? getPath(dictionary, "ui.themeDark") || "Sombre"
+              : getPath(dictionary, "ui.themeLight") || "Clair";
+          });
+        };
+
+        const initialLang = localStorage.getItem("tp-lang") || "fr";
+        const initialTheme = localStorage.getItem("tp-theme") || "light";
+        applyLanguage(initialLang);
+        applyTheme(initialTheme);
+
+        document.querySelectorAll("[data-lang-toggle]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const nextLang = (localStorage.getItem("tp-lang") || "fr") === "fr" ? "en" : "fr";
+            localStorage.setItem("tp-lang", nextLang);
+            applyLanguage(nextLang);
+            applyTheme(localStorage.getItem("tp-theme") || "light");
+          });
+        });
+
+        document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const nextTheme = (localStorage.getItem("tp-theme") || "light") === "light" ? "dark" : "light";
+            localStorage.setItem("tp-theme", nextTheme);
+            applyTheme(nextTheme);
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

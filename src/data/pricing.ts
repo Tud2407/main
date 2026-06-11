@@ -1,4 +1,5 @@
 export type PricingPlan = {
+  key: "essential" | "pro" | "premium";
   name: string;
   description: string;
   price: string;
@@ -10,6 +11,7 @@ export type PricingPlan = {
 
 export const pricing: PricingPlan[] = [
   {
+    key: "essential",
     name: "Essentiel",
     description: "Première vitrine simple, propre et professionnelle.",
     price: "390 €",
@@ -28,6 +30,7 @@ export const pricing: PricingPlan[] = [
     ],
   },
   {
+    key: "pro",
     name: "Pro",
     description: "Vitrine plus complète et plus convaincante.",
     price: "990 €",
@@ -50,6 +53,7 @@ export const pricing: PricingPlan[] = [
     ],
   },
   {
+    key: "premium",
     name: "Premium Local",
     description: "Site complet pour les activités à plus fort enjeu.",
     price: "Sur devis",

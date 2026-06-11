@@ -3,12 +3,12 @@ import Button from "@components/Button.astro";
 import Container from "@components/Container.astro";
 
 const navItems = [
-  { label: "Accueil", href: "/" },
-  { label: "Exemples", href: "/#exemples" },
-  { label: "Offres", href: "/#offres" },
-  { label: "Méthode", href: "/#methode" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "Contact", href: "/contact" },
+  { key: "nav.home", label: "Accueil", href: "/" },
+  { key: "nav.examples", label: "Exemples", href: "/#exemples" },
+  { key: "nav.offers", label: "Offres", href: "/#offres" },
+  { key: "nav.method", label: "Méthode", href: "/#methode" },
+  { key: "nav.faq", label: "FAQ", href: "/#faq" },
+  { key: "nav.contact", label: "Contact", href: "/contact" },
 ];
 ---
 
@@ -32,6 +32,7 @@ const navItems = [
           navItems.map((item) => (
             <a
               href={item.href}
+              data-i18n={item.key}
               class="rounded-full px-4 py-2 text-sm font-extrabold text-tudor-deep transition hover:bg-tudor-green/10 hover:text-tudor-dark focus-visible:outline-tudor-peach"
             >
               {item.label}
@@ -41,8 +42,14 @@ const navItems = [
       </nav>
 
       <div class="hidden items-center gap-3 lg:flex">
-        <Button href="tel:+33625664448" variant="ghost" size="sm">Appeler</Button>
-        <Button href="/contact" size="sm">Demander ma démo</Button>
+        <button type="button" class="site-toggle" data-theme-toggle aria-label="Changer le thème">
+          <span data-theme-label>Clair</span>
+        </button>
+        <button type="button" class="site-toggle" data-lang-toggle aria-label="Changer la langue">
+          <span data-lang-label>EN</span>
+        </button>
+        <Button href="tel:+33625664448" variant="ghost" size="sm"><span data-i18n="nav.call">Appeler</span></Button>
+        <Button href="/contact" size="sm"><span data-i18n="nav.demo">Demander ma démo</span></Button>
       </div>
 
       <details class="group relative lg:hidden">
@@ -51,11 +58,20 @@ const navItems = [
           <span class="h-0.5 w-5 rounded-full bg-current shadow-[0_7px_0_current,0_-7px_0_current]"></span>
         </summary>
         <div class="absolute right-0 top-16 w-[min(88vw,22rem)] rounded-lg border border-tudor-green/16 bg-tudor-cream p-3 shadow-[0_20px_70px_rgba(3,59,53,0.18)]">
+          <div class="mb-3 grid grid-cols-2 gap-2">
+            <button type="button" class="site-toggle w-full" data-theme-toggle aria-label="Changer le thème">
+              <span data-theme-label>Clair</span>
+            </button>
+            <button type="button" class="site-toggle w-full" data-lang-toggle aria-label="Changer la langue">
+              <span data-lang-label>EN</span>
+            </button>
+          </div>
           <nav class="grid gap-1" aria-label="Navigation mobile">
             {
               navItems.map((item) => (
                 <a
                   href={item.href}
+                  data-i18n={item.key}
                   class="rounded-md px-4 py-3 font-extrabold text-tudor-deep transition hover:bg-tudor-green/10 hover:text-tudor-dark focus-visible:outline-tudor-peach"
                 >
                   {item.label}
@@ -64,8 +80,8 @@ const navItems = [
             }
           </nav>
           <div class="mt-3 grid gap-2 border-t border-tudor-green/12 pt-3">
-            <Button href="/contact" class="w-full">Demander ma démo</Button>
-            <Button href="tel:+33625664448" variant="dark" class="w-full">Appeler Tudor</Button>
+            <Button href="/contact" class="w-full"><span data-i18n="nav.demo">Demander ma démo</span></Button>
+            <Button href="tel:+33625664448" variant="dark" class="w-full"><span data-i18n="nav.call">Appeler Tudor</span></Button>
           </div>
         </div>
       </details>
