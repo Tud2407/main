@@ -17,11 +17,20 @@ export const fr = {
     eyebrow: "Sites modernes pour professionnels locaux",
     title: "Une vitrine qui travaille pour vous",
     subtitle:
-      "Je crée des sites vitrines modernes pensés pour rassurer vos futurs clients, valoriser votre activité et faciliter la prise de contact.",
+      "Je crée des sites vitrines modernes pour professionnels locaux, pensés pour rassurer vos futurs clients, valoriser votre activité et faciliter la prise de contact.",
     primaryCta: "Demander ma démo",
     secondaryCta: "Voir les exemples",
     badges: ["Démo avant engagement", "Design moderne", "SEO local", "Contact facilité"],
     floating: ["Plus visible", "Plus crédible", "Contact facilité", "SEO local"],
+    cards: [
+      { label: "Démo incluse", value: "avant engagement" },
+      { value: "Site livré en quelques jours" },
+    ],
+    stats: [
+      { label: "Première démo" },
+      { label: "Personnalisé" },
+      { label: "SEO & contenu" },
+    ],
   },
   problem: {
     eyebrow: "Le vrai sujet",

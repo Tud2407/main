@@ -221,9 +221,12 @@ select {
   color: var(--color-green-dark);
 }
 
-html[data-theme="dark"] .bg-tudor-cream,
-html[data-theme="dark"] .bg-tudor-soft {
+html[data-theme="dark"] .bg-tudor-cream {
   background-color: var(--page-bg);
+}
+
+html[data-theme="dark"] .bg-tudor-soft {
+  background-color: var(--page-bg-soft);
 }
 
 html[data-theme="dark"] .text-tudor-dark,
@@ -231,6 +234,7 @@ html[data-theme="dark"] .text-tudor-deep {
   color: var(--page-text);
 }
 
+html[data-theme="dark"] .border-tudor-green\/12,
 html[data-theme="dark"] .border-tudor-green\/14,
 html[data-theme="dark"] .border-tudor-green\/16,
 html[data-theme="dark"] .border-tudor-green\/20,
@@ -238,10 +242,7 @@ html[data-theme="dark"] .border-tudor-green\/24 {
   border-color: var(--border-soft);
 }
 
-html[data-theme="dark"] .bg-white\/92 {
-  background-color: var(--surface);
-}
-
+html[data-theme="dark"] .bg-white\/92,
 html[data-theme="dark"] .bg-white\/78,
 html[data-theme="dark"] .bg-white\/74,
 html[data-theme="dark"] .bg-white\/72,
@@ -286,6 +287,7 @@ html[data-theme="dark"] .btn-dark:hover {
 }
 
 html[data-theme="dark"] .bg-tudor-cream\/95,
+html[data-theme="dark"] .bg-tudor-cream\/94,
 html[data-theme="dark"] .bg-tudor-cream\/90,
 html[data-theme="dark"] .bg-tudor-cream\/10 {
   background-color: var(--page-bg-soft);
@@ -305,6 +307,22 @@ html[data-theme="dark"] .text-tudor-dark\/80,
 html[data-theme="dark"] .text-tudor-dark\/78,
 html[data-theme="dark"] .text-tudor-dark\/76 {
   color: var(--page-muted);
+}
+
+/* Peach backgrounds must always use dark text — overrides the global text-tudor-dark→cream rule */
+html[data-theme="dark"] .bg-tudor-peach {
+  color: var(--color-green-dark);
+}
+
+/* FAQ / glossaire: open accordion stays on surface, not white */
+html[data-theme="dark"] details[open] {
+  background-color: var(--surface);
+}
+
+/* Ghost button hover: keep cream text in dark mode */
+html[data-theme="dark"] .btn-ghost:hover {
+  background: rgba(255, 247, 239, 0.1);
+  color: var(--color-cream);
 }
 
 .fade-up {

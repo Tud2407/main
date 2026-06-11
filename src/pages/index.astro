@@ -123,96 +123,145 @@ const contactGoals = [
 
 <BaseLayout>
   <main>
-    <Section id="accueil" class="relative overflow-hidden">
-      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_88%_16%,rgba(255,196,157,0.34),transparent_30%),radial-gradient(circle_at_12%_82%,rgba(14,143,120,0.13),transparent_26%),linear-gradient(148deg,var(--page-bg),var(--page-bg-soft))]"></div>
-      <div class="surface-grid pointer-events-none absolute inset-0 opacity-[0.32]"></div>
-      <Container>
-        <div class="relative grid min-h-[calc(100vh-6rem)] items-center gap-12 py-16 lg:grid-cols-[0.94fr_1.06fr]">
+    <!-- HERO -->
+    <section id="accueil" class="relative overflow-hidden bg-[var(--page-bg)]">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_16%,rgba(255,196,157,0.24),transparent_30%),radial-gradient(circle_at_6%_84%,rgba(14,143,120,0.10),transparent_24%)]"></div>
+      <div aria-hidden="true" class="surface-grid pointer-events-none absolute inset-0 opacity-[0.20]"></div>
 
-          <!-- Left: content -->
+      <Container>
+        <div class="relative grid min-h-[calc(100vh-6rem)] items-center gap-10 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+
+          <!-- LEFT: value proposition -->
           <div class="fade-up">
-            <div class="mb-7 inline-flex items-center gap-3 rounded-2xl border border-tudor-green/12 bg-white/70 px-4 py-3 shadow-[0_8px_28px_rgba(6,79,70,0.1)] backdrop-blur-sm">
-              <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-[0_4px_14px_rgba(6,79,70,0.12)] ring-1 ring-tudor-green/10">
-                <img src="/assets/logo-tudor-pop-transparent.png" alt="Logo Tudor Pop" class="h-8 w-8 object-contain" />
-              </span>
-              <div>
-                <p class="font-display text-sm font-black text-tudor-dark">Tudor Pop</p>
-                <p class="text-xs font-bold text-tudor-green">Sites vitrines modernes</p>
-              </div>
-            </div>
-            <Badge variant="peach"><span data-i18n="hero.eyebrow">Sites modernes pour professionnels locaux</span></Badge>
-            <h1 data-i18n="hero.title" class="mt-5 max-w-3xl font-display text-5xl font-black leading-[1.04] text-tudor-dark sm:text-6xl lg:text-7xl">
+            <Badge variant="peach">
+              <span data-i18n="hero.eyebrow">Sites modernes pour professionnels locaux</span>
+            </Badge>
+
+            <h1
+              data-i18n="hero.title"
+              class="mt-6 font-display text-5xl font-black leading-[1.03] text-tudor-dark sm:text-6xl xl:text-[4.75rem]"
+            >
               Une vitrine qui travaille pour vous
             </h1>
-            <p data-i18n="hero.subtitle" class="mt-6 max-w-2xl text-lg leading-8 text-tudor-deep/84 md:text-xl">
-              Je crée des sites vitrines modernes pensés pour rassurer vos futurs clients, valoriser votre activité et faciliter la prise de contact.
+
+            <p
+              data-i18n="hero.subtitle"
+              class="mt-6 max-w-lg text-lg leading-8 text-tudor-deep/82 xl:text-xl"
+            >
+              Je crée des sites vitrines modernes pour professionnels locaux, pensés pour rassurer vos futurs clients, valoriser votre activité et faciliter la prise de contact.
             </p>
-            <div class="mt-7 flex flex-wrap gap-2" data-i18n-list="hero.badges">
-              {heroBadges.map((badge) => <Badge><span data-i18n-item>{badge}</span></Badge>)}
+
+            <div class="mt-9 flex flex-wrap gap-3">
+              <Button href="#contact" size="lg">
+                <span data-i18n="hero.primaryCta">Demander ma démo</span>
+              </Button>
+              <Button href="#exemples" variant="outline" size="lg">
+                <span data-i18n="hero.secondaryCta">Voir les exemples</span>
+              </Button>
             </div>
-            <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button href="#contact" size="lg"><span data-i18n="hero.primaryCta">Demander ma démo</span></Button>
-              <Button href="#exemples" variant="dark" size="lg"><span data-i18n="hero.secondaryCta">Voir les exemples</span></Button>
-            </div>
+
+            <ul
+              class="mt-10 grid grid-cols-2 gap-x-6 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-8 sm:gap-y-3"
+              data-i18n-list="hero.badges"
+            >
+              {heroBadges.map((badge) => (
+                <li class="flex items-center gap-2.5">
+                  <span aria-hidden="true" class="h-2 w-2 shrink-0 rounded-full bg-tudor-peach"></span>
+                  <span data-i18n-item class="text-sm font-bold text-tudor-deep">{badge}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <!-- Right: premium card -->
-          <div class="fade-up delay-2 relative lg:py-8">
-            <!-- Floating pills (desktop only, outside card boundary) -->
-            <div class="absolute -left-10 top-[20%] z-10 hidden items-center gap-2 rounded-full border border-tudor-green/18 bg-white/92 px-4 py-2 shadow-[0_8px_24px_rgba(6,79,70,0.14)] backdrop-blur-sm lg:flex">
-              <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-tudor-peach"></span>
-              <span class="text-sm font-black text-tudor-dark" data-i18n="hero.floating.0">Plus visible</span>
-            </div>
-            <div class="absolute -right-10 top-[38%] z-10 hidden items-center gap-2 rounded-full border border-tudor-green/18 bg-white/92 px-4 py-2 shadow-[0_8px_24px_rgba(6,79,70,0.14)] backdrop-blur-sm lg:flex">
-              <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-tudor-green"></span>
-              <span class="text-sm font-black text-tudor-dark" data-i18n="hero.floating.1">Plus crédible</span>
-            </div>
-            <div class="absolute -bottom-4 left-[18%] z-10 hidden items-center gap-2 rounded-full border border-tudor-green/18 bg-white/92 px-4 py-2 shadow-[0_8px_24px_rgba(6,79,70,0.14)] backdrop-blur-sm lg:flex">
-              <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-tudor-peach"></span>
-              <span class="text-sm font-black text-tudor-dark" data-i18n="hero.floating.2">Contact facilité</span>
-            </div>
-            <div class="absolute -top-6 right-[14%] z-10 hidden items-center gap-2 rounded-full border border-tudor-green/18 bg-white/92 px-4 py-2 shadow-[0_8px_24px_rgba(6,79,70,0.14)] backdrop-blur-sm lg:flex">
-              <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-tudor-green"></span>
-              <span class="text-sm font-black text-tudor-dark" data-i18n="hero.floating.3">SEO local</span>
+          <!-- RIGHT: dark showcase panel -->
+          <div class="fade-up delay-2 relative lg:py-10">
+
+            <!-- Floating card: Démo incluse (desktop only) -->
+            <div class="absolute -right-3 -top-6 z-10 hidden lg:block">
+              <div class="rounded-2xl border border-tudor-green/16 bg-white/92 px-4 py-3 shadow-[0_12px_40px_rgba(3,59,53,0.14)] backdrop-blur-sm">
+                <p class="text-[0.68rem] font-black uppercase tracking-[0.14em] text-tudor-green">
+                  <span data-i18n="hero.cards.0.label">Démo incluse</span>
+                </p>
+                <p class="mt-0.5 font-display text-base font-black text-tudor-dark">
+                  <span data-i18n="hero.cards.0.value">avant engagement</span>
+                </p>
+              </div>
             </div>
 
-            <!-- Main card -->
-            <div class="rounded-2xl border border-tudor-green/16 bg-white/72 p-5 shadow-[0_40px_100px_rgba(6,79,70,0.18)] backdrop-blur-sm">
-              <!-- Card header -->
-              <div class="relative overflow-hidden rounded-xl bg-tudor-dark p-4">
-                <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,196,157,0.22),transparent_26%),radial-gradient(circle_at_82%_74%,rgba(14,143,120,0.38),transparent_30%)]"></div>
-                <div class="relative flex items-center justify-between gap-4">
-                  <div class="flex items-center gap-3">
-                    <img src="/assets/logo-tudor-pop-transparent.png" alt="" class="h-12 w-12 rounded-xl bg-tudor-cream/10 object-contain p-1.5" />
-                    <div>
-                      <p class="font-display text-lg font-black text-tudor-cream">Tudor Pop</p>
-                      <p class="text-xs font-bold text-tudor-peach">Vitrine locale</p>
-                    </div>
+            <!-- Floating card: livraison rapide (desktop only) -->
+            <div class="absolute -bottom-6 -left-3 z-10 hidden items-center gap-3 rounded-2xl border border-tudor-green/16 bg-white/92 px-4 py-3 shadow-[0_12px_40px_rgba(3,59,53,0.14)] backdrop-blur-sm lg:flex">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-tudor-peach text-tudor-dark">
+                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-[2.5]" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="text-sm font-black text-tudor-dark">
+                <span data-i18n="hero.cards.1.value">Site livré en quelques jours</span>
+              </span>
+            </div>
+
+            <!-- Dark showcase panel (no card-within-card) -->
+            <div class="relative overflow-hidden rounded-3xl bg-tudor-dark shadow-[0_50px_120px_rgba(3,59,53,0.28)]">
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_88%_10%,rgba(255,196,157,0.20),transparent_26%),radial-gradient(circle_at_12%_88%,rgba(14,143,120,0.28),transparent_24%)]"></div>
+
+              <!-- Panel header: logo identity, featured and large -->
+              <div class="relative flex items-center justify-between px-6 pt-6 pb-4">
+                <div class="flex items-center gap-4">
+                  <img
+                    src="/assets/logo-tudor-pop-transparent.png"
+                    alt="Logo Tudor Pop"
+                    class="h-16 w-16 object-contain"
+                  />
+                  <div>
+                    <p class="font-display text-xl font-black text-tudor-cream">Tudor Pop</p>
+                    <p class="text-xs font-bold text-tudor-peach">Sites vitrines locaux</p>
                   </div>
-                  <span class="rounded-full bg-tudor-peach px-4 py-1.5 text-sm font-black text-tudor-dark">Demo</span>
                 </div>
+                <span class="rounded-full border border-tudor-peach/30 bg-tudor-peach/16 px-3 py-1.5 text-xs font-black text-tudor-peach">
+                  Demo
+                </span>
               </div>
 
-              <!-- Image (contain, never cropped) -->
-              <div class="mt-3 rounded-xl bg-tudor-soft p-3">
+              <div class="mx-6 h-px bg-white/10"></div>
+
+              <!-- Image directly on dark bg — no inner frame -->
+              <div class="px-5 pt-4 pb-3">
                 <img
                   src="/assets/la-vitrine-et-les-plus.png"
-                  alt="Composition premium d'un site vitrine pour commerce local"
-                  class="h-[22rem] w-full rounded-lg object-contain sm:h-[28rem] lg:h-[32rem]"
+                  alt="Aperçu d'un site vitrine moderne pour commerce local"
+                  class="h-[18rem] w-full rounded-2xl object-contain sm:h-[22rem] lg:h-[22rem]"
+                  loading="eager"
+                  fetchpriority="high"
                 />
               </div>
 
-              <!-- Mobile floating pills (hidden on lg+) -->
-              <div class="mt-3 grid grid-cols-2 gap-2 lg:hidden" data-i18n-list="hero.floating">
-                {["Plus visible", "Plus crédible", "Contact facilité", "SEO local"].map((item) => (
-                  <span data-i18n-item class="rounded-full border border-tudor-green/16 bg-tudor-soft px-3 py-2 text-center text-sm font-black text-tudor-dark">{item}</span>
-                ))}
+              <!-- Stats strip -->
+              <div class="relative mx-4 mb-4 grid grid-cols-3 rounded-2xl bg-white/6 py-3">
+                <div class="flex flex-col items-center gap-1 border-r border-white/10 px-3">
+                  <span class="font-display text-xl font-black text-tudor-peach">48h</span>
+                  <span class="text-center text-[0.65rem] font-bold leading-tight text-tudor-cream/58">
+                    <span data-i18n="hero.stats.0.label">Première démo</span>
+                  </span>
+                </div>
+                <div class="flex flex-col items-center gap-1 border-r border-white/10 px-3">
+                  <span class="font-display text-xl font-black text-tudor-cream">100%</span>
+                  <span class="text-center text-[0.65rem] font-bold leading-tight text-tudor-cream/58">
+                    <span data-i18n="hero.stats.1.label">Personnalisé</span>
+                  </span>
+                </div>
+                <div class="flex flex-col items-center gap-1 px-3">
+                  <span class="font-display text-xl font-black text-tudor-peach">Local</span>
+                  <span class="text-center text-[0.65rem] font-bold leading-tight text-tudor-cream/58">
+                    <span data-i18n="hero.stats.2.label">SEO & contenu</span>
+                  </span>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </Container>
-    </Section>
+    </section>
 
     <Section id="probleme" tone="soft">
       <Container>

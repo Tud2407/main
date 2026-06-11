@@ -14,14 +14,23 @@ export const en = {
     tagline: "Showcase websites",
   },
   hero: {
-    eyebrow: "Modern websites for local businesses",
+    eyebrow: "Modern websites for local professionals",
     title: "A website that works for you",
     subtitle:
-      "I create modern showcase websites designed to reassure your future customers, showcase your business and make contact easier.",
+      "I create modern showcase websites for local professionals, designed to reassure future customers, highlight your business and make contact easier.",
     primaryCta: "Request my demo",
     secondaryCta: "See examples",
-    badges: ["Demo before commitment", "Modern design", "Local SEO", "Easy contact"],
-    floating: ["More visible", "More credible", "Easy contact", "Local SEO"],
+    badges: ["Demo before commitment", "Modern design", "Local SEO", "Easier contact"],
+    floating: ["More visible", "More credible", "Easier contact", "Local SEO"],
+    cards: [
+      { label: "Demo included", value: "before commitment" },
+      { value: "Website delivered in a few days" },
+    ],
+    stats: [
+      { label: "First demo" },
+      { label: "Personalised" },
+      { label: "SEO & content" },
+    ],
   },
   problem: {
     eyebrow: "The real issue",
