@@ -233,8 +233,13 @@ html[data-theme="dark"] .text-tudor-deep {
 
 html[data-theme="dark"] .border-tudor-green\/14,
 html[data-theme="dark"] .border-tudor-green\/16,
+html[data-theme="dark"] .border-tudor-green\/20,
 html[data-theme="dark"] .border-tudor-green\/24 {
   border-color: var(--border-soft);
+}
+
+html[data-theme="dark"] .bg-white\/92 {
+  background-color: var(--surface);
 }
 
 html[data-theme="dark"] .bg-white\/78,
@@ -267,6 +272,39 @@ html[data-theme="dark"] .site-toggle {
 
 html[data-theme="dark"] header {
   background-color: rgba(3, 59, 53, 0.88);
+}
+
+html[data-theme="dark"] .btn-dark {
+  background: var(--color-green);
+  color: var(--color-cream);
+  box-shadow: 0 16px 36px rgba(14, 143, 120, 0.28);
+}
+
+html[data-theme="dark"] .btn-dark:hover {
+  background: var(--color-green-deep);
+  color: var(--color-cream);
+}
+
+html[data-theme="dark"] .bg-tudor-cream\/95,
+html[data-theme="dark"] .bg-tudor-cream\/90,
+html[data-theme="dark"] .bg-tudor-cream\/10 {
+  background-color: var(--page-bg-soft);
+}
+
+html[data-theme="dark"] .text-tudor-deep\/84,
+html[data-theme="dark"] .text-tudor-deep\/82,
+html[data-theme="dark"] .text-tudor-deep\/80,
+html[data-theme="dark"] .text-tudor-deep\/78,
+html[data-theme="dark"] .text-tudor-deep\/76,
+html[data-theme="dark"] .text-tudor-deep\/72 {
+  color: var(--page-muted);
+}
+
+html[data-theme="dark"] .text-tudor-dark\/82,
+html[data-theme="dark"] .text-tudor-dark\/80,
+html[data-theme="dark"] .text-tudor-dark\/78,
+html[data-theme="dark"] .text-tudor-dark\/76 {
+  color: var(--page-muted);
 }
 
 .fade-up {

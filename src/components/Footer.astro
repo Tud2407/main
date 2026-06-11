@@ -4,13 +4,13 @@ import Container from "@components/Container.astro";
 import { contact } from "@data/contact";
 
 const footerLinks = [
-  { label: "Création site vitrine", href: "/creation-site-vitrine" },
-  { label: "Glossaire", href: "/glossaire" },
-  { label: "Réalisations", href: "/realisations" },
-  { label: "Garages", href: "/secteurs/garages" },
-  { label: "Restaurants", href: "/secteurs/restaurants" },
-  { label: "Cabinets médicaux", href: "/secteurs/cabinets-medicaux" },
-  { label: "Contact", href: "/contact" },
+  { label: "Création site vitrine", href: "/creation-site-vitrine", key: "footer.links.creation" },
+  { label: "Glossaire", href: "/glossaire", key: "footer.links.glossaire" },
+  { label: "Réalisations", href: "/realisations", key: "footer.links.realisations" },
+  { label: "Garages", href: "/secteurs/garages", key: "footer.links.garages" },
+  { label: "Restaurants", href: "/secteurs/restaurants", key: "footer.links.restaurants" },
+  { label: "Cabinets médicaux", href: "/secteurs/cabinets-medicaux", key: "footer.links.cabinets" },
+  { label: "Contact", href: "/contact", key: "footer.links.contact" },
 ];
 ---
 
@@ -24,25 +24,25 @@ const footerLinks = [
           </span>
           <span>
             <span class="block font-display text-xl font-black">Tudor Pop</span>
-            <span class="block text-sm font-bold text-tudor-peach">Sites modernes pour professionnels locaux</span>
+            <span data-i18n="footer.tagline" class="block text-sm font-bold text-tudor-peach">Sites modernes pour professionnels locaux</span>
           </span>
         </a>
-        <p class="mt-5 max-w-md leading-7 text-tudor-cream/76">
+        <p data-i18n="footer.description" class="mt-5 max-w-md leading-7 text-tudor-cream/76">
           Des vitrines modernes, rapides et claires pour rendre votre activité plus visible, plus crédible et plus facile à contacter.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <Button href="/contact" size="sm">Demander ma démo</Button>
-          <Button href={`mailto:${contact.email}`} variant="secondary" size="sm">Envoyer un email</Button>
+          <Button href="/contact" size="sm"><span data-i18n="footer.cta">Demander ma démo</span></Button>
+          <Button href={`mailto:${contact.email}`} variant="secondary" size="sm"><span data-i18n="footer.emailCta">Envoyer un email</span></Button>
         </div>
       </div>
 
       <nav aria-label="Liens de pied de page">
-        <h2 class="font-display text-base font-black">Navigation</h2>
+        <h2 data-i18n="footer.navTitle" class="font-display text-base font-black">Navigation</h2>
         <ul class="mt-4 grid gap-3">
           {
             footerLinks.map((link) => (
               <li>
-                <a class="text-sm font-bold text-tudor-cream/76 transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={link.href}>
+                <a data-i18n={link.key} class="text-sm font-bold text-tudor-cream/76 transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={link.href}>
                   {link.label}
                 </a>
               </li>
@@ -52,7 +52,7 @@ const footerLinks = [
       </nav>
 
       <div>
-        <h2 class="font-display text-base font-black">Contact direct</h2>
+        <h2 data-i18n="footer.contactTitle" class="font-display text-base font-black">Contact direct</h2>
         <address class="mt-4 grid gap-3 not-italic text-sm font-bold text-tudor-cream/76">
           <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href="tel:+33625664448">{contact.phone}</a>
           <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={`mailto:${contact.email}`}>{contact.email}</a>
@@ -63,8 +63,8 @@ const footerLinks = [
     </div>
 
     <div class="flex flex-col gap-3 border-t border-white/10 py-6 text-sm font-semibold text-tudor-cream/60 md:flex-row md:items-center md:justify-between">
-      <p>© {new Date().getFullYear()} Tudor Pop. Tous droits réservés.</p>
-      <p>Une vitrine qui travaille pour vous.</p>
+      <p>© {new Date().getFullYear()} Tudor Pop. <span data-i18n="footer.copyright">Tous droits réservés.</span></p>
+      <p data-i18n="footer.slogan">Une vitrine qui travaille pour vous.</p>
     </div>
   </Container>
 </footer>

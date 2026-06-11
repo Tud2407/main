@@ -11,16 +11,16 @@ import { localTrades } from "@data/localTrades";
   <Container>
     <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
       <div>
-        <Badge variant="green">Métiers locaux</Badge>
-        <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+        <Badge variant="green"><span data-i18n="localTrades.eyebrow">Métiers locaux</span></Badge>
+        <h2 data-i18n="localTrades.title" class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
           Des sites pensés pour les métiers locaux
         </h2>
-        <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+        <p data-i18n="localTrades.text" class="mt-5 text-lg leading-8 text-tudor-deep/80">
           Chaque métier a ses propres besoins : rassurer, présenter ses services, montrer son ambiance, faciliter la réservation ou générer des appels. Mon approche consiste à adapter la structure du site à votre activité, votre ville et vos clients.
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="#contact">Demander ma démo</Button>
-          <Button href="/realisations" variant="outline">Explorer les métiers</Button>
+          <Button href="#contact"><span data-i18n="localTrades.primaryCta">Demander ma démo</span></Button>
+          <Button href="/realisations" variant="outline"><span data-i18n="localTrades.secondaryCta">Explorer les métiers</span></Button>
         </div>
       </div>
 
@@ -28,7 +28,7 @@ import { localTrades } from "@data/localTrades";
         <img
           src="/assets/exemples-de-commerces-locaux.png"
           alt="Illustration de sites pour commerces locaux"
-          class="h-72 w-full rounded-md object-cover object-center sm:h-96"
+          class="h-72 w-full rounded-md object-contain bg-tudor-dark sm:h-96"
           loading="lazy"
         />
       </Card>
@@ -36,17 +36,17 @@ import { localTrades } from "@data/localTrades";
 
     <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
       {
-        localTrades.map((trade) => (
+        localTrades.map((trade, index) => (
           <Card variant="light" interactive class="flex h-full flex-col">
-            <h3 class="font-display text-2xl font-black leading-tight text-tudor-dark">{trade.name}</h3>
-            <p class="mt-4 leading-7 text-tudor-deep/78">{trade.objective}</p>
-            <div class="mt-5 flex flex-wrap gap-2">
+            <h3 data-i18n={`localTrades.items.${index}.name`} class="font-display text-2xl font-black leading-tight text-tudor-dark">{trade.name}</h3>
+            <p data-i18n={`localTrades.items.${index}.objective`} class="mt-4 leading-7 text-tudor-deep/78">{trade.objective}</p>
+            <div class="mt-5 flex flex-wrap gap-2" data-i18n-list={`localTrades.items.${index}.highlights`}>
               {trade.highlights.map((highlight) => (
-                <Badge variant="peach">{highlight}</Badge>
+                <Badge variant="peach"><span data-i18n-item>{highlight}</span></Badge>
               ))}
             </div>
             <div class="mt-auto pt-6">
-              <Button href="#contact" variant="dark" size="sm">{trade.cta}</Button>
+              <Button href="#contact" variant="dark" size="sm"><span data-i18n={`localTrades.items.${index}.cta`}>{trade.cta}</span></Button>
             </div>
           </Card>
         ))

@@ -6,9 +6,11 @@ type Props = {
   title: string;
   description: string;
   tone?: "light" | "dark";
+  titleKey?: string;
+  descKey?: string;
 };
 
-const { icon = "demo", title, description, tone = "light" } = Astro.props;
+const { icon = "demo", title, description, tone = "light", titleKey, descKey } = Astro.props;
 
 const paths: Record<IconName, string> = {
   demo: "M8 5v14l11-7-11-7Zm14 7a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z",
@@ -30,7 +32,7 @@ const descClasses = tone === "dark" ? "text-tudor-cream/78" : "text-tudor-deep/7
     </svg>
   </div>
   <div>
-    <h3 class:list={["font-display text-lg font-black leading-snug", textClasses]}>{title}</h3>
-    <p class:list={["mt-2 leading-7", descClasses]}>{description}</p>
+    <h3 class:list={["font-display text-lg font-black leading-snug", textClasses]} data-i18n={titleKey}>{title}</h3>
+    <p class:list={["mt-2 leading-7", descClasses]} data-i18n={descKey}>{description}</p>
   </div>
 </div>

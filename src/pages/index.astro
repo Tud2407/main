@@ -102,6 +102,13 @@ const beforeAfter = [
   ["Des contacts qui se perdent", "Des appels plus faciles"],
 ];
 
+const solutionIconPaths: Record<string, string> = {
+  demo: "M8 5v14l11-7-11-7Zm14 7a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z",
+  design: "M4 5h16v11H4V5Zm4 15h8m-4-4v4M8 9h8m-8 4h5",
+  local: "M12 22s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Zm0-9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z",
+  contact: "M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z",
+};
+
 const contactGoals = [
   "Avoir un site moderne",
   "Recevoir plus d'appels",
@@ -116,27 +123,31 @@ const contactGoals = [
 
 <BaseLayout>
   <main>
-    <Section id="accueil" class="relative overflow-hidden bg-[radial-gradient(circle_at_82%_14%,rgba(255,196,157,0.28),transparent_26%),linear-gradient(135deg,var(--page-bg),var(--page-bg-soft))]">
+    <Section id="accueil" class="relative overflow-hidden">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_88%_16%,rgba(255,196,157,0.34),transparent_30%),radial-gradient(circle_at_12%_82%,rgba(14,143,120,0.13),transparent_26%),linear-gradient(148deg,var(--page-bg),var(--page-bg-soft))]"></div>
+      <div class="surface-grid pointer-events-none absolute inset-0 opacity-[0.32]"></div>
       <Container>
-        <div class="grid min-h-[calc(100vh-6rem)] items-center gap-12 py-8 lg:grid-cols-[0.94fr_1.06fr]">
+        <div class="relative grid min-h-[calc(100vh-6rem)] items-center gap-12 py-16 lg:grid-cols-[0.94fr_1.06fr]">
+
+          <!-- Left: content -->
           <div class="fade-up">
-            <div class="mb-7 flex items-center gap-4">
-              <span class="flex h-20 w-20 items-center justify-center rounded-full bg-white/80 shadow-[0_18px_42px_rgba(6,79,70,0.12)] ring-1 ring-tudor-green/12 sm:h-24 sm:w-24">
-                <img
-                  src="/assets/logo-tudor-pop-transparent.png"
-                  alt="Logo Tudor Pop"
-                  class="h-16 w-16 object-contain sm:h-20 sm:w-20"
-                />
+            <div class="mb-7 inline-flex items-center gap-3 rounded-2xl border border-tudor-green/12 bg-white/70 px-4 py-3 shadow-[0_8px_28px_rgba(6,79,70,0.1)] backdrop-blur-sm">
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-[0_4px_14px_rgba(6,79,70,0.12)] ring-1 ring-tudor-green/10">
+                <img src="/assets/logo-tudor-pop-transparent.png" alt="Logo Tudor Pop" class="h-8 w-8 object-contain" />
               </span>
-              <Badge variant="peach"><span data-i18n="hero.eyebrow">Sites modernes pour professionnels locaux</span></Badge>
+              <div>
+                <p class="font-display text-sm font-black text-tudor-dark">Tudor Pop</p>
+                <p class="text-xs font-bold text-tudor-green">Sites vitrines modernes</p>
+              </div>
             </div>
-            <h1 data-i18n="hero.title" class="mt-6 max-w-3xl font-display text-5xl font-black leading-[1.04] text-tudor-dark sm:text-6xl lg:text-7xl">
+            <Badge variant="peach"><span data-i18n="hero.eyebrow">Sites modernes pour professionnels locaux</span></Badge>
+            <h1 data-i18n="hero.title" class="mt-5 max-w-3xl font-display text-5xl font-black leading-[1.04] text-tudor-dark sm:text-6xl lg:text-7xl">
               Une vitrine qui travaille pour vous
             </h1>
             <p data-i18n="hero.subtitle" class="mt-6 max-w-2xl text-lg leading-8 text-tudor-deep/84 md:text-xl">
-              Je crée des sites vitrines modernes qui donnent une image plus professionnelle aux commerces locaux, rassurent vos futurs clients et facilitent la prise de contact.
+              Je crée des sites vitrines modernes pensés pour rassurer vos futurs clients, valoriser votre activité et faciliter la prise de contact.
             </p>
-            <div class="mt-7 flex flex-wrap gap-3" data-i18n-list="hero.badges">
+            <div class="mt-7 flex flex-wrap gap-2" data-i18n-list="hero.badges">
               {heroBadges.map((badge) => <Badge><span data-i18n-item>{badge}</span></Badge>)}
             </div>
             <div class="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -145,38 +156,58 @@ const contactGoals = [
             </div>
           </div>
 
-          <div class="fade-up delay-2">
-            <div class="relative rounded-lg border border-tudor-green/16 bg-white/72 p-4 shadow-[0_32px_90px_rgba(6,79,70,0.16)] backdrop-blur">
-              <div class="relative overflow-hidden rounded-md bg-tudor-deep p-5 text-tudor-cream">
-                <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(255,196,157,0.24),transparent_24%),radial-gradient(circle_at_82%_72%,rgba(14,143,120,0.38),transparent_30%)]"></div>
+          <!-- Right: premium card -->
+          <div class="fade-up delay-2 relative lg:py-8">
+            <!-- Floating pills (desktop only, outside card boundary) -->
+            <div class="absolute -left-10 top-[20%] z-10 hidden items-center gap-2 rounded-full border border-tudor-green/18 bg-white/92 px-4 py-2 shadow-[0_8px_24px_rgba(6,79,70,0.14)] backdrop-blur-sm lg:flex">
+              <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-tudor-peach"></span>
+              <span class="text-sm font-black text-tudor-dark" data-i18n="hero.floating.0">Plus visible</span>
+            </div>
+            <div class="absolute -right-10 top-[38%] z-10 hidden items-center gap-2 rounded-full border border-tudor-green/18 bg-white/92 px-4 py-2 shadow-[0_8px_24px_rgba(6,79,70,0.14)] backdrop-blur-sm lg:flex">
+              <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-tudor-green"></span>
+              <span class="text-sm font-black text-tudor-dark" data-i18n="hero.floating.1">Plus crédible</span>
+            </div>
+            <div class="absolute -bottom-4 left-[18%] z-10 hidden items-center gap-2 rounded-full border border-tudor-green/18 bg-white/92 px-4 py-2 shadow-[0_8px_24px_rgba(6,79,70,0.14)] backdrop-blur-sm lg:flex">
+              <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-tudor-peach"></span>
+              <span class="text-sm font-black text-tudor-dark" data-i18n="hero.floating.2">Contact facilité</span>
+            </div>
+            <div class="absolute -top-6 right-[14%] z-10 hidden items-center gap-2 rounded-full border border-tudor-green/18 bg-white/92 px-4 py-2 shadow-[0_8px_24px_rgba(6,79,70,0.14)] backdrop-blur-sm lg:flex">
+              <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-tudor-green"></span>
+              <span class="text-sm font-black text-tudor-dark" data-i18n="hero.floating.3">SEO local</span>
+            </div>
+
+            <!-- Main card -->
+            <div class="rounded-2xl border border-tudor-green/16 bg-white/72 p-5 shadow-[0_40px_100px_rgba(6,79,70,0.18)] backdrop-blur-sm">
+              <!-- Card header -->
+              <div class="relative overflow-hidden rounded-xl bg-tudor-dark p-4">
+                <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,196,157,0.22),transparent_26%),radial-gradient(circle_at_82%_74%,rgba(14,143,120,0.38),transparent_30%)]"></div>
                 <div class="relative flex items-center justify-between gap-4">
                   <div class="flex items-center gap-3">
-                    <img src="/assets/logo-tudor-pop-transparent.png" alt="" class="h-14 w-14 rounded-full bg-tudor-cream object-contain p-1" />
+                    <img src="/assets/logo-tudor-pop-transparent.png" alt="" class="h-12 w-12 rounded-xl bg-tudor-cream/10 object-contain p-1.5" />
                     <div>
-                      <p class="font-display text-xl font-black">Tudor Pop</p>
-                      <p class="text-sm font-bold text-tudor-peach">Vitrine locale</p>
+                      <p class="font-display text-lg font-black text-tudor-cream">Tudor Pop</p>
+                      <p class="text-xs font-bold text-tudor-peach">Vitrine locale</p>
                     </div>
                   </div>
-                  <span class="hidden rounded-full bg-tudor-peach px-4 py-2 text-sm font-black text-tudor-dark sm:inline-flex">Demo</span>
-                </div>
-                <div class="relative mt-5 rounded-lg bg-tudor-cream/95 p-3 shadow-[0_22px_60px_rgba(3,59,53,0.22)]">
-                  <img
-                    src="/assets/la-vitrine-et-les-plus.png"
-                    alt="Composition premium d'un site vitrine pour commerce local"
-                    class="h-[20rem] w-full rounded-md object-contain sm:h-[25rem] lg:h-[30rem]"
-                  />
-                </div>
-                <div class="relative mt-4 grid gap-3 text-sm font-black sm:grid-cols-4" data-i18n-list="hero.floating">
-                  {["Plus visible", "Plus crédible", "Contact facilité", "SEO local"].map((item) => (
-                    <span data-i18n-item class="rounded-full border border-tudor-peach/35 bg-tudor-dark/72 px-3 py-2 text-center text-tudor-cream">{item}</span>
-                  ))}
+                  <span class="rounded-full bg-tudor-peach px-4 py-1.5 text-sm font-black text-tudor-dark">Demo</span>
                 </div>
               </div>
-              <img
-                src="/assets/pub-1.png"
-                alt="Aperçu secondaire d'une vitrine web moderne Tudor Pop"
-                class="mt-4 h-28 w-full rounded-md object-cover object-center opacity-90 sm:h-36"
-              />
+
+              <!-- Image (contain, never cropped) -->
+              <div class="mt-3 rounded-xl bg-tudor-soft p-3">
+                <img
+                  src="/assets/la-vitrine-et-les-plus.png"
+                  alt="Composition premium d'un site vitrine pour commerce local"
+                  class="h-[22rem] w-full rounded-lg object-contain sm:h-[28rem] lg:h-[32rem]"
+                />
+              </div>
+
+              <!-- Mobile floating pills (hidden on lg+) -->
+              <div class="mt-3 grid grid-cols-2 gap-2 lg:hidden" data-i18n-list="hero.floating">
+                {["Plus visible", "Plus crédible", "Contact facilité", "SEO local"].map((item) => (
+                  <span data-i18n-item class="rounded-full border border-tudor-green/16 bg-tudor-soft px-3 py-2 text-center text-sm font-black text-tudor-dark">{item}</span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -187,11 +218,11 @@ const contactGoals = [
       <Container>
         <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div class="max-w-3xl">
-            <Badge variant="green">Le vrai sujet</Badge>
-            <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            <Badge variant="green"><span data-i18n="problem.eyebrow">Le vrai sujet</span></Badge>
+            <h2 data-i18n="problem.title" class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
               Vos clients vous regardent déjà en ligne
             </h2>
-            <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            <p data-i18n="problem.text" class="mt-5 text-lg leading-8 text-tudor-deep/80">
               Avant d'appeler, réserver ou passer vous voir, vos futurs clients regardent votre image en ligne. Une fiche Google seule ne suffit pas toujours à rassurer, expliquer et donner envie.
             </p>
           </div>
@@ -199,17 +230,17 @@ const contactGoals = [
             <img
               src="/assets/site-internet.png"
               alt="Illustration d'un site internet clair pour une activité locale"
-              class="h-64 w-full rounded-md object-cover object-center sm:h-80"
+              class="h-64 w-full rounded-md object-contain bg-tudor-soft sm:h-80"
               loading="lazy"
             />
           </Card>
         </div>
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-i18n-list="problem.cards">
           {problemCards.map((problem) => (
             <Card interactive>
               <div class="flex items-center gap-3">
                 <span class="h-3 w-3 rounded-full bg-tudor-peach"></span>
-                <h3 class="font-display text-xl font-black">{problem}</h3>
+                <h3 data-i18n-item class="font-display text-xl font-black">{problem}</h3>
               </div>
             </Card>
           ))}
@@ -219,39 +250,46 @@ const contactGoals = [
 
     <Section id="solution" tone="deep" class="overflow-hidden">
       <Container>
-        <div class="grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+        <div class="grid gap-12 lg:grid-cols-[1fr_0.78fr] lg:items-center">
           <div>
             <Badge variant="peach"><span data-i18n="solution.eyebrow">La solution</span></Badge>
             <h2 data-i18n="solution.title" class="mt-5 font-display text-4xl font-black leading-tight md:text-5xl">
-              Une présence en ligne claire, crédible et facile à contacter
+              Je transforme votre présence en ligne en vraie vitrine commerciale
             </h2>
-            <p data-i18n="solution.text" class="mt-5 text-lg leading-8 text-tudor-cream/78">
-              Je construis une vitrine adaptée à votre métier, à votre ville et aux actions que vos clients doivent faire rapidement.
+            <p data-i18n="solution.text" class="mt-5 max-w-2xl text-lg leading-8 text-tudor-cream/78">
+              Un site clair, moderne et pensé pour convertir. Votre activité devient plus compréhensible, plus crédible et plus simple à contacter.
             </p>
             <div class="mt-8">
               <Button href="#contact"><span data-i18n="solution.cta">Voir ce que mon site pourrait donner</span></Button>
             </div>
           </div>
 
-          <div class="grid gap-5">
-            <Card variant="green" class="grid gap-6 p-5 md:grid-cols-[0.95fr_1.05fr] md:items-center">
-              <div class="grid gap-4">
-                {solutionFeatures.map((feature) => (
-                  <div class="rounded-lg border border-white/14 bg-tudor-deep/40 p-4">
-                    <IconFeature icon={feature.icon} title={feature.title} description={feature.description} tone="dark" />
-                  </div>
-                ))}
-              </div>
-              <div class="rounded-lg bg-tudor-cream p-4">
-                <img
-                  src="/assets/avantages-du-projet.png"
-                  alt="Illustration des avantages d'un projet de site vitrine"
-                  class="h-72 w-full rounded-md object-contain md:h-[34rem]"
-                  loading="lazy"
-                />
-              </div>
-            </Card>
+          <div class="rounded-2xl border border-white/10 bg-tudor-cream/8 p-5">
+            <img
+              src="/assets/avantages-du-projet.png"
+              alt="Illustration des avantages d'un site vitrine professionnel"
+              class="h-64 w-full rounded-xl object-contain sm:h-80 lg:h-[22rem]"
+              loading="lazy"
+            />
           </div>
+        </div>
+
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {solutionFeatures.map((feature, index) => (
+            <article class="rounded-xl border border-white/12 bg-tudor-dark/42 p-6">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-tudor-peach text-tudor-dark shadow-[0_8px_22px_rgba(255,196,157,0.28)]">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current stroke-2">
+                  <path d={solutionIconPaths[feature.icon]} stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3 data-i18n={`solution.features.${index}.title`} class="mt-4 font-display text-lg font-black leading-snug text-tudor-cream">
+                {feature.title}
+              </h3>
+              <p data-i18n={`solution.features.${index}.description`} class="mt-2 leading-7 text-tudor-cream/72">
+                {feature.description}
+              </p>
+            </article>
+          ))}
         </div>
       </Container>
     </Section>
@@ -305,11 +343,11 @@ const contactGoals = [
       <Container>
         <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div class="max-w-3xl">
-            <Badge variant="green">Méthode</Badge>
-            <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            <Badge variant="green"><span data-i18n="method.eyebrow">Méthode</span></Badge>
+            <h2 data-i18n="method.title" class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
               Une méthode simple pour aller vite sans vous perdre
             </h2>
-            <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            <p data-i18n="method.text" class="mt-5 text-lg leading-8 text-tudor-deep/80">
               Pas besoin d'avoir déjà un cahier des charges. On part de votre activité, puis on avance avec une projection concrète.
             </p>
           </div>
@@ -317,21 +355,24 @@ const contactGoals = [
             <img
               src="/assets/etapes-du-projet.png"
               alt="Illustration des étapes d'un projet de site vitrine"
-              class="h-64 w-full rounded-md object-cover object-center sm:h-80"
+              class="h-64 w-full rounded-md object-contain bg-tudor-soft sm:h-80"
               loading="lazy"
             />
           </Card>
         </div>
-        <div class="mt-12 grid gap-5 lg:grid-cols-5">
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {processSteps.map((step, index) => (
             <Card interactive class="relative">
-              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-tudor-dark font-display text-sm font-black text-tudor-cream">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-tudor-peach font-display text-sm font-black text-tudor-dark">
                 {index + 1}
               </span>
-              <h3 class="mt-5 font-display text-xl font-black text-tudor-dark">{step.title}</h3>
-              <p class="mt-3 leading-7 text-tudor-deep/78">{step.description}</p>
+              <h3 data-i18n={`method.steps.${index}.title`} class="mt-5 font-display text-lg font-black text-tudor-dark">{step.title}</h3>
+              <p data-i18n={`method.steps.${index}.description`} class="mt-3 leading-7 text-tudor-deep/78">{step.description}</p>
             </Card>
           ))}
+        </div>
+        <div class="mt-10 flex justify-center">
+          <Button href="#contact" variant="dark"><span data-i18n="hero.primaryCta">Demander ma démo</span></Button>
         </div>
       </Container>
     </Section>
@@ -350,7 +391,7 @@ const contactGoals = [
         <div class="mt-10 grid gap-5 lg:grid-cols-3">
           {pricing.map((plan) => (
             <Card variant={plan.highlighted ? "deep" : "light"} interactive class={["flex h-full flex-col", plan.highlighted ? "lg:-translate-y-3" : ""].join(" ")}>
-              {plan.highlighted && <Badge variant="peach">Le plus demandé</Badge>}
+              {plan.highlighted && <Badge variant="peach"><span data-i18n="offers.popular">Le plus demandé</span></Badge>}
               <h3 class:list={["mt-4 font-display text-3xl font-black", plan.highlighted ? "text-tudor-cream" : "text-tudor-dark"]}>{plan.name}</h3>
               <p data-i18n={`offers.plans.${plan.key}.description`} class:list={["mt-3 leading-7", plan.highlighted ? "text-tudor-cream/78" : "text-tudor-deep/78"]}>{plan.description}</p>
               <p data-i18n={`offers.plans.${plan.key}.time`} class:list={["mt-3 text-sm font-extrabold uppercase tracking-[0.14em]", plan.highlighted ? "text-tudor-peach" : "text-tudor-green"]}>{plan.timeEstimate}</p>
@@ -365,7 +406,7 @@ const contactGoals = [
                 ))}
               </ul>
               <div class="mt-auto pt-8">
-                <Button href="#contact" variant={plan.highlighted ? "primary" : "dark"} class="w-full">Demander ma démo</Button>
+                <Button href="#contact" variant={plan.highlighted ? "primary" : "dark"} class="w-full"><span data-i18n="offers.demoCta">Demander ma démo</span></Button>
               </div>
             </Card>
           ))}
@@ -373,8 +414,8 @@ const contactGoals = [
         <Card variant="outline" class="mt-5">
           <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <h3 class="font-display text-2xl font-black text-tudor-dark">Maintenance optionnelle</h3>
-              <p class="mt-2 text-tudor-deep/78">Suivi simple pour garder votre site propre, disponible et à jour.</p>
+              <h3 data-i18n="offers.maintenance.title" class="font-display text-2xl font-black text-tudor-dark">Maintenance optionnelle</h3>
+              <p data-i18n="offers.maintenance.text" class="mt-2 text-tudor-deep/78">Suivi simple pour garder votre site propre, disponible et à jour.</p>
               <ul class="mt-4 flex flex-wrap gap-2">
                 {maintenance.features.map((feature) => <li class="rounded-full bg-white/70 px-3 py-1 text-sm font-bold text-tudor-deep">{feature}</li>)}
               </ul>
@@ -387,35 +428,54 @@ const contactGoals = [
 
     <Section id="difference" tone="green" class="overflow-hidden">
       <Container>
-        <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
-          <Card variant="deep" class="relative overflow-hidden p-8 md:p-10">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_12%,rgba(255,196,157,0.18),transparent_28%)]"></div>
-            <div class="relative">
-              <Badge variant="peach"><span data-i18n="why.eyebrow">Pourquoi travailler avec moi</span></Badge>
-              <h2 data-i18n="why.title" class="mt-5 font-display text-4xl font-black leading-tight md:text-5xl">
-              Plus concret qu'une promesse de site web
-              </h2>
-              <p data-i18n="why.text" class="mt-5 text-lg leading-8 text-tudor-cream/82">
-              Vous ne payez pas seulement pour du code. Vous investissez dans une meilleure image, plus de confiance et un contact plus évident.
-              </p>
-              <div class="mt-8 rounded-lg bg-tudor-cream p-4">
+        <div class="max-w-3xl">
+          <Badge variant="peach"><span data-i18n="why.eyebrow">Pourquoi travailler avec moi</span></Badge>
+          <h2 data-i18n="why.title" class="mt-5 font-display text-4xl font-black leading-tight text-tudor-cream md:text-5xl">
+            Plus concret qu'une promesse de site web
+          </h2>
+          <p data-i18n="why.text" class="mt-5 text-lg leading-8 text-tudor-cream/82">
+            Vous ne payez pas seulement pour du code. Vous investissez dans une meilleure image, plus de confiance et un contact plus évident.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {differentiators.map((item, index) => (
+            <article class="rounded-xl border border-white/12 bg-tudor-dark/52 p-6">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-tudor-peach text-tudor-dark shadow-[0_8px_22px_rgba(255,196,157,0.28)]">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current stroke-2">
+                  <path d={solutionIconPaths[item.icon]} stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3 data-i18n={`why.features.${index}.title`} class="mt-4 font-display text-lg font-black leading-snug text-tudor-cream">{item.title}</h3>
+              <p data-i18n={`why.features.${index}.description`} class="mt-2 leading-7 text-tudor-cream/72">{item.description}</p>
+            </article>
+          ))}
+
+          <article class="relative overflow-hidden rounded-xl border border-tudor-peach/28 bg-tudor-cream p-6 text-tudor-dark sm:col-span-2 lg:col-span-2">
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_88%_50%,rgba(255,196,157,0.26),transparent_38%)]"></div>
+            <div class="relative flex flex-col gap-6 md:flex-row md:items-center">
+              <div class="flex-1">
+                <Badge variant="green"><span data-i18n="why.glossary.eyebrow">Comprendre le web</span></Badge>
+                <h3 data-i18n="why.glossary.title" class="mt-4 font-display text-2xl font-black leading-snug text-tudor-dark md:text-3xl">
+                  Je rends le web plus simple à comprendre
+                </h3>
+                <p data-i18n="why.glossary.text" class="mt-3 max-w-xl leading-7 text-tudor-deep/78">
+                  SEO, domaine, hébergement, responsive, formulaire… j'explique les notions importantes pour que vous sachiez ce que vous achetez.
+                </p>
+                <Button href="/glossaire" variant="dark" class="mt-6">
+                  <span data-i18n="why.glossary.cta">Comprendre les mots du web</span>
+                </Button>
+              </div>
+              <div class="shrink-0">
                 <img
                   src="/assets/personalisation.png"
-                  alt="Illustration de la personnalisation du site selon l'activité"
-                  class="h-72 w-full rounded-md object-contain"
+                  alt="Illustration de la personnalisation et de la transparence dans un projet web"
+                  class="h-48 w-full rounded-xl object-contain md:h-56 md:w-56 lg:h-64 lg:w-64"
                   loading="lazy"
                 />
               </div>
             </div>
-          </Card>
-
-          <div class="grid gap-5 sm:grid-cols-2">
-            {differentiators.map((item) => (
-              <Card variant="deep" interactive class="min-h-56">
-                <IconFeature icon={item.icon} title={item.title} description={item.description} tone="dark" />
-              </Card>
-            ))}
-          </div>
+          </article>
         </div>
       </Container>
     </Section>
@@ -423,8 +483,8 @@ const contactGoals = [
     <Section id="avant-apres" tone="soft">
       <Container>
         <div class="max-w-3xl">
-          <Badge variant="green">Avant / Après</Badge>
-          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+          <Badge variant="green"><span data-i18n="beforeAfter.eyebrow">Avant / Après</span></Badge>
+          <h2 data-i18n="beforeAfter.title" class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
             Ce que votre site doit changer
           </h2>
         </div>
@@ -432,24 +492,24 @@ const contactGoals = [
           <img
             src="/assets/pub-2-avant-apres.png"
             alt="Illustration avant après d'une présence en ligne modernisée"
-            class="h-64 w-full rounded-md object-cover object-center sm:h-96"
+            class="h-64 w-full rounded-md object-contain bg-tudor-soft sm:h-80"
             loading="lazy"
           />
         </Card>
         <div class="mt-10 grid gap-5 lg:grid-cols-2">
           <Card variant="outline">
-            <h3 class="font-display text-3xl font-black text-tudor-dark">Avant</h3>
+            <h3 data-i18n="beforeAfter.before" class="font-display text-3xl font-black text-tudor-dark">Avant</h3>
             <ul class="mt-6 grid gap-4">
-              {beforeAfter.map(([before]) => (
-                <li class="rounded-md bg-white/70 p-4 font-bold text-tudor-deep/78">{before}</li>
+              {beforeAfter.map(([before], index) => (
+                <li data-i18n={`beforeAfter.items.${index}.before`} class="rounded-md bg-white/70 p-4 font-bold text-tudor-deep/78">{before}</li>
               ))}
             </ul>
           </Card>
           <Card variant="green">
-            <h3 class="font-display text-3xl font-black text-tudor-cream">Après</h3>
+            <h3 data-i18n="beforeAfter.after" class="font-display text-3xl font-black text-tudor-cream">Après</h3>
             <ul class="mt-6 grid gap-4">
-              {beforeAfter.map(([, after]) => (
-                <li class="rounded-md bg-tudor-cream p-4 font-bold text-tudor-dark">{after}</li>
+              {beforeAfter.map(([, after], index) => (
+                <li data-i18n={`beforeAfter.items.${index}.after`} class="rounded-md bg-tudor-cream p-4 font-bold text-tudor-dark">{after}</li>
               ))}
             </ul>
           </Card>
@@ -460,8 +520,8 @@ const contactGoals = [
     <Section id="faq" tone="cream">
       <Container width="lg">
         <div class="max-w-3xl">
-          <Badge variant="green">FAQ</Badge>
-          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+          <Badge variant="green"><span data-i18n="faq.eyebrow">FAQ</span></Badge>
+          <h2 data-i18n="faq.title" class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
             Les questions qui reviennent souvent
           </h2>
         </div>
@@ -499,7 +559,7 @@ const contactGoals = [
             <img
               src="/assets/contact-rapide.png"
               alt="Illustration d'un contact rapide depuis un site vitrine"
-              class="mt-8 h-64 w-full rounded-md object-cover object-center"
+              class="mt-8 h-64 w-full rounded-md object-contain"
               loading="lazy"
             />
           </div>
@@ -508,41 +568,41 @@ const contactGoals = [
             <ContactForm>
               <div class="grid gap-4 md:grid-cols-2">
                 <label class="block">
-                  <span class="text-sm font-extrabold text-tudor-dark">Nom</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-white px-4 text-tudor-dark focus:border-tudor-green" type="text" name="nom" autocomplete="name" required />
+                  <span data-i18n="contact.fields.name" class="text-sm font-extrabold text-tudor-dark">Nom</span>
+                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="text" name="nom" autocomplete="name" required />
                 </label>
                 <label class="block">
-                  <span class="text-sm font-extrabold text-tudor-dark">Activité</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-white px-4 text-tudor-dark focus:border-tudor-green" type="text" name="activite" required />
+                  <span data-i18n="contact.fields.activity" class="text-sm font-extrabold text-tudor-dark">Activité</span>
+                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="text" name="activite" required />
                 </label>
                 <label class="block">
-                  <span class="text-sm font-extrabold text-tudor-dark">Ville</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-white px-4 text-tudor-dark focus:border-tudor-green" type="text" name="ville" required />
+                  <span data-i18n="contact.fields.city" class="text-sm font-extrabold text-tudor-dark">Ville</span>
+                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="text" name="ville" required />
                 </label>
                 <label class="block">
-                  <span class="text-sm font-extrabold text-tudor-dark">Email</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-white px-4 text-tudor-dark focus:border-tudor-green" type="email" name="email" autocomplete="email" required />
+                  <span data-i18n="contact.fields.email" class="text-sm font-extrabold text-tudor-dark">Email</span>
+                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="email" name="email" autocomplete="email" required />
                 </label>
                 <label class="block">
-                  <span class="text-sm font-extrabold text-tudor-dark">Téléphone</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-white px-4 text-tudor-dark focus:border-tudor-green" type="tel" name="telephone" autocomplete="tel" />
+                  <span data-i18n="contact.fields.phone" class="text-sm font-extrabold text-tudor-dark">Téléphone</span>
+                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="tel" name="telephone" autocomplete="tel" />
                 </label>
                 <label class="block">
-                  <span class="text-sm font-extrabold text-tudor-dark">Objectif principal</span>
-                  <select class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-white px-4 text-tudor-dark focus:border-tudor-green" name="objectif">
-                    {contactGoals.map((goal) => <option>{goal}</option>)}
+                  <span data-i18n="contact.fields.goal" class="text-sm font-extrabold text-tudor-dark">Objectif principal</span>
+                  <select class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" name="objectif">
+                    {contactGoals.map((goal, i) => <option data-i18n={`contact.goals.${i}`}>{goal}</option>)}
                   </select>
                 </label>
               </div>
               <label class="mt-4 block">
-                <span class="text-sm font-extrabold text-tudor-dark">Site actuel ou fiche Google</span>
-                <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-white px-4 text-tudor-dark focus:border-tudor-green" type="url" name="site-actuel" />
+                <span data-i18n="contact.fields.currentSite" class="text-sm font-extrabold text-tudor-dark">Site actuel ou fiche Google</span>
+                <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="url" name="site-actuel" />
               </label>
               <label class="mt-4 block">
-                <span class="text-sm font-extrabold text-tudor-dark">Message</span>
-                <textarea class="mt-2 w-full rounded-md border border-tudor-green/20 bg-white px-4 py-3 text-tudor-dark focus:border-tudor-green" name="message" rows="5"></textarea>
+                <span data-i18n="contact.fields.message" class="text-sm font-extrabold text-tudor-dark">Message</span>
+                <textarea class="mt-2 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 py-3 text-tudor-dark focus:border-tudor-green" name="message" rows="5"></textarea>
               </label>
-              <p class="mt-4 text-sm font-bold leading-6 text-tudor-deep/72">
+              <p data-i18n="contact.fields.hint" class="mt-4 text-sm font-bold leading-6 text-tudor-deep/72">
                 Pas besoin d'avoir déjà un cahier des charges. Envoyez-moi simplement votre activité et votre ville.
               </p>
               <Button type="submit" class="mt-5 w-full"><span data-i18n="contact.submit">Envoyer ma demande</span></Button>
