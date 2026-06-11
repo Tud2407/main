@@ -1,0 +1,21 @@
+---
+type Variant = "cream" | "peach" | "green" | "outline";
+
+type Props = {
+  variant?: Variant;
+  class?: string;
+};
+
+const { variant = "outline", class: className } = Astro.props;
+
+const variantClasses: Record<Variant, string> = {
+  cream: "bg-tudor-cream text-tudor-deep",
+  peach: "bg-tudor-peach text-tudor-dark",
+  green: "bg-tudor-green text-tudor-cream",
+  outline: "border border-tudor-green/30 bg-white/50 text-tudor-deep",
+};
+---
+
+<span class:list={["inline-flex min-h-9 items-center rounded-full px-4 py-1.5 text-sm font-extrabold", variantClasses[variant], className]}>
+  <slot />
+</span>

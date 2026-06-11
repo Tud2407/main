@@ -1,0 +1,35 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import ContactForm from "@components/ContactForm.astro";
+import { contact } from "@data/contact";
+---
+
+<BaseLayout
+  title="Contact - Tudor Pop"
+  description="Contactez Tudor Pop pour demander une demo de site vitrine moderne pour votre activite locale."
+>
+  <main class="mx-auto max-w-5xl px-6 py-24">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-green)]">
+      Contact
+    </p>
+    <h1 class="mt-4 text-4xl font-black text-[var(--color-green-dark)]">
+      Echanger sur votre projet
+    </h1>
+    <p class="mt-4 text-lg text-[var(--color-green-deep)]">
+      {contact.email} - {contact.phone}
+    </p>
+    <ContactForm>
+      <label class="mt-8 block">
+        <span class="block font-semibold">Email</span>
+        <input class="mt-2 w-full rounded-md border p-3" type="email" name="email" required />
+      </label>
+      <label class="mt-4 block">
+        <span class="block font-semibold">Message</span>
+        <textarea class="mt-2 w-full rounded-md border p-3" name="message" rows="5"></textarea>
+      </label>
+      <button class="mt-4 rounded-full bg-[var(--color-peach)] px-6 py-3 font-bold" type="submit">
+        Envoyer ma demande
+      </button>
+    </ContactForm>
+  </main>
+</BaseLayout>

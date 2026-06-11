@@ -1,0 +1,67 @@
+---
+import Button from "@components/Button.astro";
+import Container from "@components/Container.astro";
+import { contact } from "@data/contact";
+
+const footerLinks = [
+  { label: "Création site vitrine", href: "/creation-site-vitrine" },
+  { label: "Réalisations", href: "/realisations" },
+  { label: "Garages", href: "/secteurs/garages" },
+  { label: "Restaurants", href: "/secteurs/restaurants" },
+  { label: "Cabinets médicaux", href: "/secteurs/cabinets-medicaux" },
+  { label: "Contact", href: "/contact" },
+];
+---
+
+<footer class="bg-tudor-dark text-tudor-cream">
+  <Container>
+    <div class="grid gap-10 py-14 md:grid-cols-[1.3fr_0.9fr_0.8fr] md:py-20">
+      <div>
+        <a href="/" class="inline-flex items-center gap-3 rounded-full focus-visible:outline-tudor-peach" aria-label="Accueil Tudor Pop">
+          <img src="/assets/logo-tudor-pop-transparent.png" alt="" class="h-12 w-12 object-contain" />
+          <span>
+            <span class="block font-display text-xl font-black">Tudor Pop</span>
+            <span class="block text-sm font-bold text-tudor-peach">Sites modernes pour professionnels locaux</span>
+          </span>
+        </a>
+        <p class="mt-5 max-w-md leading-7 text-tudor-cream/76">
+          Des vitrines modernes, rapides et claires pour rendre votre activité plus visible, plus crédible et plus facile à contacter.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <Button href="/contact" size="sm">Demander ma démo</Button>
+          <Button href={`mailto:${contact.email}`} variant="secondary" size="sm">Envoyer un email</Button>
+        </div>
+      </div>
+
+      <nav aria-label="Liens de pied de page">
+        <h2 class="font-display text-base font-black">Navigation</h2>
+        <ul class="mt-4 grid gap-3">
+          {
+            footerLinks.map((link) => (
+              <li>
+                <a class="text-sm font-bold text-tudor-cream/76 transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={link.href}>
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="font-display text-base font-black">Contact direct</h2>
+        <address class="mt-4 grid gap-3 not-italic text-sm font-bold text-tudor-cream/76">
+          <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href="tel:+33625664448">{contact.phone}</a>
+          <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={`mailto:${contact.email}`}>{contact.email}</a>
+          <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={`https://www.linkedin.com/in/${contact.linkedin}`}>LinkedIn</a>
+          <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={`https://www.instagram.com/${contact.instagram}`}>Instagram</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3 border-t border-white/10 py-6 text-sm font-semibold text-tudor-cream/60 md:flex-row md:items-center md:justify-between">
+      <p>© {new Date().getFullYear()} Tudor Pop. Tous droits réservés.</p>
+      <p>Une vitrine qui travaille pour vous.</p>
+    </div>
+  </Container>
+</footer>

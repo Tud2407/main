@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { projects } from "@data/projects";
+---
+
+<BaseLayout
+  title="Realisations - Tudor Pop"
+  description="Exemples de demos et sites vitrines pour garages, restaurants, coffee shops, cabinets et commerces locaux."
+>
+  <main class="mx-auto max-w-5xl px-6 py-24">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-green)]">
+      Realisations
+    </p>
+    <h1 class="mt-4 text-4xl font-black text-[var(--color-green-dark)]">
+      Exemples a enrichir avec les demos finales
+    </h1>
+    <ul class="mt-8 grid gap-4 md:grid-cols-3">
+      {projects.map((project) => <li class="rounded-lg border border-[var(--color-green)] p-4">{project.name}</li>)}
+    </ul>
+  </main>
+</BaseLayout>

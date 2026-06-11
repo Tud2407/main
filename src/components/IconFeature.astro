@@ -1,0 +1,36 @@
+---
+type IconName = "demo" | "design" | "local" | "contact" | "trust" | "growth";
+
+type Props = {
+  icon?: IconName;
+  title: string;
+  description: string;
+  tone?: "light" | "dark";
+};
+
+const { icon = "demo", title, description, tone = "light" } = Astro.props;
+
+const paths: Record<IconName, string> = {
+  demo: "M8 5v14l11-7-11-7Zm14 7a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z",
+  design: "M4 5h16v11H4V5Zm4 15h8m-4-4v4M8 9h8m-8 4h5",
+  local: "M12 22s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Zm0-9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z",
+  contact: "M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z",
+  trust: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-5",
+  growth: "M4 19V5m0 14h16M8 15l3-3 3 2 5-7",
+};
+
+const textClasses = tone === "dark" ? "text-tudor-cream" : "text-tudor-dark";
+const descClasses = tone === "dark" ? "text-tudor-cream/78" : "text-tudor-deep/78";
+---
+
+<div class="flex gap-4">
+  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-tudor-peach text-tudor-dark shadow-[0_12px_30px_rgba(255,196,157,0.28)]">
+    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-2">
+      <path d={paths[icon]} stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </div>
+  <div>
+    <h3 class:list={["font-display text-lg font-black leading-snug", textClasses]}>{title}</h3>
+    <p class:list={["mt-2 leading-7", descClasses]}>{description}</p>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+---
+type Variant = "primary" | "secondary" | "ghost" | "dark";
+type Size = "sm" | "md" | "lg";
+type ButtonType = "button" | "submit" | "reset";
+
+type Props = {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  type?: ButtonType;
+  ariaLabel?: string;
+  class?: string;
+};
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  type = "button",
+  ariaLabel,
+  class: className,
+} = Astro.props;
+
+const baseClasses =
+  "inline-flex items-center justify-center gap-2 rounded-full font-extrabold transition duration-200 ease-out focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-tudor-peach disabled:pointer-events-none disabled:opacity-55";
+
+const variantClasses: Record<Variant, string> = {
+  primary:
+    "bg-tudor-peach text-tudor-dark shadow-[0_14px_34px_rgba(255,196,157,0.32)] hover:-translate-y-0.5 hover:bg-[#ffd2b6] hover:shadow-[0_18px_38px_rgba(255,196,157,0.42)]",
+  secondary:
+    "border border-tudor-peach/80 bg-tudor-cream/10 text-tudor-cream hover:-translate-y-0.5 hover:bg-tudor-peach hover:text-tudor-dark",
+  ghost:
+    "text-tudor-deep hover:bg-tudor-green/10 hover:text-tudor-dark",
+  dark:
+    "bg-tudor-dark text-tudor-cream shadow-[0_14px_34px_rgba(3,59,53,0.24)] hover:-translate-y-0.5 hover:bg-tudor-deep",
+};
+
+const sizeClasses: Record<Size, string> = {
+  sm: "min-h-10 px-4 text-sm",
+  md: "min-h-12 px-5 text-sm md:px-6",
+  lg: "min-h-14 px-7 text-base",
+};
+
+const classes = [baseClasses, variantClasses[variant], sizeClasses[size], className];
+---
+
+{
+  href ? (
+    <a href={href} aria-label={ariaLabel} class:list={classes}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} aria-label={ariaLabel} class:list={classes}>
+      <slot />
+    </button>
+  )
+}

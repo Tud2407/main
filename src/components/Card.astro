@@ -1,0 +1,26 @@
+---
+type Variant = "light" | "green" | "deep" | "outline";
+
+type Props = {
+  variant?: Variant;
+  interactive?: boolean;
+  class?: string;
+};
+
+const { variant = "light", interactive = false, class: className } = Astro.props;
+
+const variantClasses: Record<Variant, string> = {
+  light: "border-tudor-green/14 bg-white/78 text-tudor-dark shadow-[0_18px_50px_rgba(6,79,70,0.08)]",
+  green: "border-white/16 bg-tudor-green text-tudor-cream shadow-[0_18px_50px_rgba(14,143,120,0.18)]",
+  deep: "border-white/12 bg-tudor-deep text-tudor-cream shadow-[0_18px_50px_rgba(6,79,70,0.24)]",
+  outline: "border-tudor-green/24 bg-transparent text-tudor-dark",
+};
+
+const interactiveClasses = interactive
+  ? "transition duration-200 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(6,79,70,0.14)]"
+  : "";
+---
+
+<article class:list={["rounded-lg border p-6", variantClasses[variant], interactiveClasses, className]}>
+  <slot />
+</article>

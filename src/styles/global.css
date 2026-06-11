@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tudor-green: #0e8f78;
+  --color-tudor-deep: #064f46;
+  --color-tudor-dark: #033b35;
+  --color-tudor-peach: #ffc49d;
+  --color-tudor-cream: #fff7ef;
+  --color-tudor-soft: #f5efe7;
+  --font-sans: "Manrope", "Inter", system-ui, sans-serif;
+  --font-display: "Sora", "Plus Jakarta Sans", "Manrope", system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --color-green: #0e8f78;
+  --color-green-deep: #064f46;
+  --color-green-dark: #033b35;
+  --color-peach: #ffc49d;
+  --color-cream: #fff7ef;
+  --color-soft: #f5efe7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(180deg, rgba(255, 247, 239, 0.96), rgba(245, 239, 231, 0.92)),
+    var(--color-cream);
+  color: var(--color-green-dark);
+  font-family:
+    Manrope,
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: var(--color-peach);
+  color: var(--color-green-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-peach);
+  outline-offset: 3px;
+}
+
+.surface-grid {
+  background-image:
+    linear-gradient(rgba(14, 143, 120, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 143, 120, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.fade-up {
+  animation: fade-up 0.7s ease both;
+}
+
+.delay-1 {
+  animation-delay: 120ms;
+}
+
+.delay-2 {
+  animation-delay: 220ms;
+}
+
+.delay-3 {
+  animation-delay: 320ms;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

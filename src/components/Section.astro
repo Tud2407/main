@@ -1,0 +1,31 @@
+---
+type Tone = "cream" | "soft" | "green" | "deep" | "dark";
+type Spacing = "sm" | "md" | "lg";
+
+type Props = {
+  id?: string;
+  tone?: Tone;
+  spacing?: Spacing;
+  class?: string;
+};
+
+const { id, tone = "cream", spacing = "lg", class: className } = Astro.props;
+
+const toneClasses: Record<Tone, string> = {
+  cream: "bg-tudor-cream text-tudor-dark",
+  soft: "bg-tudor-soft text-tudor-dark",
+  green: "bg-tudor-green text-tudor-cream",
+  deep: "bg-tudor-deep text-tudor-cream",
+  dark: "bg-tudor-dark text-tudor-cream",
+};
+
+const spacingClasses: Record<Spacing, string> = {
+  sm: "py-12 md:py-16",
+  md: "py-16 md:py-24",
+  lg: "py-20 md:py-32",
+};
+---
+
+<section id={id} class:list={[toneClasses[tone], spacingClasses[spacing], className]}>
+  <slot />
+</section>
