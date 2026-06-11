@@ -1,0 +1,118 @@
+---
+import Badge from "@components/Badge.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import { glossaryTerms } from "@data/glossary";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Glossaire web simple | Tudor Pop"
+  description="Comprendre simplement les termes importants d'un site internet : SEO, nom de domaine, hebergement, responsive, CTA, analytics, maintenance et plus encore."
+>
+  <main>
+    <Section tone="cream" class="surface-grid overflow-hidden">
+      <Container>
+        <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <Badge variant="green">Glossaire web</Badge>
+            <h1 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-6xl">
+              Comprendre les mots importants d'un site internet
+            </h1>
+            <p class="mt-6 max-w-3xl text-lg leading-8 text-tudor-deep/80 md:text-xl">
+              Creer un site internet ne devrait pas etre complique. Cette page explique simplement les notions les plus importantes pour comprendre ce que vous achetez, ce qui est inclus, et ce qui permet a votre site d'etre visible, rapide et utile.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href="#termes">Lire le glossaire</Button>
+              <Button href="/contact" variant="outline">Poser une question</Button>
+            </div>
+          </div>
+
+          <Card variant="deep" class="relative overflow-hidden p-8">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(255,196,157,0.2),transparent_30%)]"></div>
+            <div class="relative">
+              <p class="text-sm font-black uppercase tracking-[0.16em] text-tudor-peach">
+                Simple, utile, concret
+              </p>
+              <h2 class="mt-4 font-display text-3xl font-black leading-tight text-tudor-cream md:text-4xl">
+                Pas besoin de parler technique pour prendre de bonnes decisions.
+              </h2>
+              <p class="mt-5 leading-8 text-tudor-cream/78">
+                Chaque mot est explique avec un exemple de commerce local, pour relier la technique a ce qui compte vraiment : etre trouve, rassurer et recevoir plus de contacts.
+              </p>
+              <div class="mt-8 grid gap-3 sm:grid-cols-3">
+                {["Visible", "Rapide", "Utile"].map((item) => (
+                  <span class="rounded-full border border-tudor-peach/32 bg-tudor-dark/42 px-4 py-3 text-center text-sm font-black text-tudor-cream">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Card>
+        </div>
+      </Container>
+    </Section>
+
+    <Section id="termes" tone="soft">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="green">Les notions a connaitre</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Des explications courtes, sans jargon inutile
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-deep/78">
+            Ouvrez les termes qui vous interessent. L'idee n'est pas de tout memoriser, mais de savoir a quoi servent ces elements dans un vrai projet de site vitrine.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-2">
+          {
+            glossaryTerms.map((item) => (
+              <details class="group rounded-lg border border-tudor-green/14 bg-white/78 p-5 text-tudor-dark shadow-[0_18px_50px_rgba(6,79,70,0.08)] transition duration-200 open:bg-white hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(6,79,70,0.12)]">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-xl font-black focus-visible:outline-tudor-peach">
+                  <span>{item.term}</span>
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-tudor-peach text-base font-black text-tudor-dark transition group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <div class="mt-5 grid gap-4 border-t border-tudor-green/12 pt-5">
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.14em] text-tudor-green">Definition simple</p>
+                    <p class="mt-2 leading-7 text-tudor-deep/80">{item.definition}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.14em] text-tudor-green">Exemple local</p>
+                    <p class="mt-2 leading-7 text-tudor-deep/80">{item.example}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.14em] text-tudor-green">Pourquoi c'est utile</p>
+                    <p class="mt-2 leading-7 text-tudor-deep/80">{item.usefulness}</p>
+                  </div>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="deep">
+      <Container>
+        <Card variant="green" class="grid gap-8 p-8 md:grid-cols-[1fr_auto] md:items-center md:p-10">
+          <div>
+            <Badge variant="peach">Accompagnement</Badge>
+            <h2 class="mt-5 font-display text-3xl font-black leading-tight text-tudor-cream md:text-5xl">
+              Vous n'avez pas besoin de tout maitriser.
+            </h2>
+            <p class="mt-5 max-w-3xl text-lg leading-8 text-tudor-cream/82">
+              Mon role est de rendre ces sujets simples et utiles pour votre activite. Vous gardez une vision claire du projet, sans devoir devenir expert technique.
+            </p>
+          </div>
+          <Button href="/contact" size="lg">Parler de mon projet</Button>
+        </Card>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>
