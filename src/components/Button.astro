@@ -1,5 +1,5 @@
 ---
-type Variant = "primary" | "secondary" | "ghost" | "dark";
+type Variant = "primary" | "secondary" | "outline" | "ghost" | "dark";
 type Size = "sm" | "md" | "lg";
 type ButtonType = "button" | "submit" | "reset";
 
@@ -26,9 +26,11 @@ const baseClasses =
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-tudor-peach text-tudor-dark shadow-[0_14px_34px_rgba(255,196,157,0.32)] hover:-translate-y-0.5 hover:bg-[#ffd2b6] hover:shadow-[0_18px_38px_rgba(255,196,157,0.42)]",
+    "bg-tudor-peach text-tudor-deep shadow-[0_14px_34px_rgba(255,196,157,0.32)] hover:-translate-y-0.5 hover:bg-[#ffd2b6] hover:text-tudor-dark hover:shadow-[0_18px_38px_rgba(255,196,157,0.42)]",
   secondary:
-    "border border-tudor-peach/80 bg-tudor-cream/10 text-tudor-cream hover:-translate-y-0.5 hover:bg-tudor-peach hover:text-tudor-dark",
+    "border border-tudor-peach/85 bg-tudor-cream/10 text-tudor-cream hover:-translate-y-0.5 hover:bg-tudor-peach hover:text-tudor-deep",
+  outline:
+    "border-2 border-tudor-deep bg-transparent text-tudor-deep shadow-[0_10px_28px_rgba(6,79,70,0.08)] hover:-translate-y-0.5 hover:bg-tudor-deep hover:text-tudor-cream",
   ghost:
     "text-tudor-deep hover:bg-tudor-green/10 hover:text-tudor-dark",
   dark:

@@ -12,18 +12,18 @@ const navItems = [
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b border-tudor-green/12 bg-tudor-cream/88 shadow-[0_10px_30px_rgba(6,79,70,0.06)] backdrop-blur-xl">
+<header class="sticky top-0 z-50 border-b border-tudor-green/12 bg-tudor-cream/90 shadow-[0_10px_30px_rgba(6,79,70,0.06)] backdrop-blur-xl">
   <Container>
-    <div class="flex min-h-20 items-center justify-between gap-4">
-      <a href="/" class="group flex items-center gap-3 rounded-full focus-visible:outline-tudor-peach" aria-label="Accueil Tudor Pop">
+    <div class="flex min-h-24 items-center justify-between gap-4">
+      <a href="/" class="group flex items-center gap-4 rounded-full focus-visible:outline-tudor-peach" aria-label="Accueil Tudor Pop">
         <img
           src="/assets/logo-tudor-pop-transparent.png"
           alt=""
-          class="h-11 w-11 rounded-full object-contain transition group-hover:scale-105"
+          class="h-14 w-14 rounded-full object-contain transition group-hover:scale-105 sm:h-16 sm:w-16"
         />
         <span class="leading-tight">
-          <span class="block font-display text-base font-black text-tudor-dark">Tudor Pop</span>
-          <span class="block text-xs font-bold uppercase tracking-[0.16em] text-tudor-green">Sites vitrines</span>
+          <span class="block font-display text-lg font-black text-tudor-dark sm:text-xl">Tudor Pop</span>
+          <span class="block text-xs font-bold uppercase tracking-[0.16em] text-tudor-green sm:text-[0.8rem]">Sites vitrines</span>
         </span>
       </a>
 
@@ -46,11 +46,11 @@ const navItems = [
       </div>
 
       <details class="group relative lg:hidden">
-        <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full bg-tudor-dark text-tudor-cream transition hover:bg-tudor-deep focus-visible:outline-tudor-peach [&::-webkit-details-marker]:hidden">
+        <summary class="flex h-12 w-12 cursor-pointer list-none items-center justify-center rounded-full bg-tudor-dark text-tudor-cream transition hover:bg-tudor-deep focus-visible:outline-tudor-peach [&::-webkit-details-marker]:hidden">
           <span class="sr-only">Ouvrir le menu</span>
           <span class="h-0.5 w-5 rounded-full bg-current shadow-[0_7px_0_current,0_-7px_0_current]"></span>
         </summary>
-        <div class="absolute right-0 top-14 w-[min(88vw,22rem)] rounded-lg border border-tudor-green/16 bg-tudor-cream p-3 shadow-[0_20px_70px_rgba(3,59,53,0.18)]">
+        <div class="absolute right-0 top-16 w-[min(88vw,22rem)] rounded-lg border border-tudor-green/16 bg-tudor-cream p-3 shadow-[0_20px_70px_rgba(3,59,53,0.18)]">
           <nav class="grid gap-1" aria-label="Navigation mobile">
             {
               navItems.map((item) => (

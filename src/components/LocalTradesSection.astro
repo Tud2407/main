@@ -1,0 +1,56 @@
+---
+import Badge from "@components/Badge.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import { localTrades } from "@data/localTrades";
+---
+
+<Section id="exemples" tone="cream">
+  <Container>
+    <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div>
+        <Badge variant="green">Métiers locaux</Badge>
+        <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+          Des sites pensés pour les métiers locaux
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+          Chaque métier a ses propres besoins : rassurer, présenter ses services, montrer son ambiance, faciliter la réservation ou générer des appels. Mon approche consiste à adapter la structure du site à votre activité, votre ville et vos clients.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href="#contact">Demander ma démo</Button>
+          <Button href="/realisations" variant="outline">Explorer les métiers</Button>
+        </div>
+      </div>
+
+      <Card variant="deep" class="overflow-hidden p-4">
+        <img
+          src="/assets/exemples-de-commerces-locaux.png"
+          alt="Illustration de sites pour commerces locaux"
+          class="h-72 w-full rounded-md object-cover object-center sm:h-96"
+          loading="lazy"
+        />
+      </Card>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+      {
+        localTrades.map((trade) => (
+          <Card variant="light" interactive class="flex h-full flex-col">
+            <h3 class="font-display text-2xl font-black leading-tight text-tudor-dark">{trade.name}</h3>
+            <p class="mt-4 leading-7 text-tudor-deep/78">{trade.objective}</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              {trade.highlights.map((highlight) => (
+                <Badge variant="peach">{highlight}</Badge>
+              ))}
+            </div>
+            <div class="mt-auto pt-6">
+              <Button href="#contact" variant="dark" size="sm">{trade.cta}</Button>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </Container>
+</Section>

@@ -1,21 +1,100 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import Badge from "@components/Badge.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import { siteConfig } from "../config/site";
+import { localTrades } from "@data/localTrades";
 import { projects } from "@data/projects";
+import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Realisations - Tudor Pop"
-  description="Exemples de demos et sites vitrines pour garages, restaurants, coffee shops, cabinets et commerces locaux."
+  title="Exemples de sites pour métiers locaux - Tudor Pop"
+  description="Approches de sites vitrines modernes pour garages, restaurants, cabinets médicaux, coffee shops, artisans et commerces locaux."
 >
-  <main class="mx-auto max-w-5xl px-6 py-24">
-    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-green)]">
-      Realisations
-    </p>
-    <h1 class="mt-4 text-4xl font-black text-[var(--color-green-dark)]">
-      Exemples a enrichir avec les demos finales
-    </h1>
-    <ul class="mt-8 grid gap-4 md:grid-cols-3">
-      {projects.map((project) => <li class="rounded-lg border border-[var(--color-green)] p-4">{project.name}</li>)}
-    </ul>
+  <main>
+    <Section tone="cream" class="surface-grid">
+      <Container>
+        <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <Badge variant="green">Exemples</Badge>
+            <h1 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-6xl">
+              Des approches adaptées aux métiers locaux
+            </h1>
+            <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+              Avant d'afficher des références clients publiques, cette page présente les besoins typiques par métier et la manière dont un site peut mieux rassurer, expliquer et déclencher le contact.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href="/#contact">Demander ma démo</Button>
+              <Button href="/#offres" variant="outline">Voir les offres</Button>
+            </div>
+          </div>
+
+          <Card variant="deep" class="overflow-hidden p-4">
+            <img
+              src="/assets/exemples-de-commerces-locaux.png"
+              alt="Illustration de commerces locaux"
+              class="h-72 w-full rounded-md object-cover object-center sm:h-96"
+              loading="lazy"
+            />
+          </Card>
+        </div>
+      </Container>
+    </Section>
+
+    {
+      siteConfig.showClientProjects ? (
+        <Section tone="soft">
+          <Container>
+            <div class="max-w-3xl">
+              <Badge variant="green">Références clients</Badge>
+              <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+                Démonstrations préparées pour des commerces réels
+              </h2>
+            </div>
+            <div class="mt-10 grid gap-5 lg:grid-cols-3">
+              {projects.map((project) => (
+                <Card variant="light" interactive class="flex h-full flex-col">
+                  <Badge variant="outline">{project.sector}</Badge>
+                  <h3 class="mt-4 font-display text-2xl font-black text-tudor-dark">{project.name}</h3>
+                  <p class="mt-2 text-sm font-extrabold text-tudor-green">{project.city}</p>
+                  <p class="mt-5 leading-7 text-tudor-deep/78">{project.solution}</p>
+                  <div class="mt-auto pt-6">
+                    <Button href={project.demoUrl ?? "/contact"} variant="dark" size="sm">Voir la démo</Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      ) : (
+        <Section tone="soft">
+          <Container>
+            <div class="max-w-3xl">
+              <Badge variant="green">Métiers locaux</Badge>
+              <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+                Chaque activité mérite une structure claire
+              </h2>
+            </div>
+            <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+              {localTrades.map((trade) => (
+                <Card variant="light" interactive class="flex h-full flex-col">
+                  <h3 class="font-display text-2xl font-black text-tudor-dark">{trade.name}</h3>
+                  <p class="mt-4 leading-7 text-tudor-deep/78">{trade.objective}</p>
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    {trade.highlights.map((highlight) => <Badge variant="peach">{highlight}</Badge>)}
+                  </div>
+                  <div class="mt-auto pt-6">
+                    <Button href="/#contact" variant="dark" size="sm">{trade.cta}</Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      )
+    }
   </main>
 </BaseLayout>

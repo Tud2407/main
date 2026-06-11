@@ -5,10 +5,12 @@ import Card from "@components/Card.astro";
 import ContactForm from "@components/ContactForm.astro";
 import Container from "@components/Container.astro";
 import IconFeature from "@components/IconFeature.astro";
+import LocalTradesSection from "@components/LocalTradesSection.astro";
 import Section from "@components/Section.astro";
+import { siteConfig } from "../config/site";
 import { contact } from "@data/contact";
 import { faq } from "@data/faq";
-import { pricing } from "@data/pricing";
+import { maintenance, pricing } from "@data/pricing";
 import { projects } from "@data/projects";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
@@ -114,7 +116,16 @@ const contactGoals = [
       <Container>
         <div class="grid min-h-[calc(100vh-5rem)] items-center gap-12 py-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div class="fade-up">
-            <Badge variant="peach">Sites modernes pour professionnels locaux</Badge>
+            <div class="mb-7 flex items-center gap-4">
+              <span class="flex h-20 w-20 items-center justify-center rounded-full bg-white/80 shadow-[0_18px_42px_rgba(6,79,70,0.12)] ring-1 ring-tudor-green/12 sm:h-24 sm:w-24">
+                <img
+                  src="/assets/logo-tudor-pop-transparent.png"
+                  alt="Logo Tudor Pop"
+                  class="h-16 w-16 object-contain sm:h-20 sm:w-20"
+                />
+              </span>
+              <Badge variant="peach">Sites modernes pour professionnels locaux</Badge>
+            </div>
             <h1 class="mt-6 max-w-3xl font-display text-5xl font-black leading-[1.04] text-tudor-dark sm:text-6xl lg:text-7xl">
               Une vitrine qui travaille pour vous
             </h1>
@@ -135,9 +146,9 @@ const contactGoals = [
               <div class="overflow-hidden rounded-md bg-tudor-deep text-tudor-cream">
                 <div class="flex items-center justify-between border-b border-white/10 px-5 py-4">
                   <div class="flex items-center gap-3">
-                    <img src="/assets/logo-tudor-pop-transparent.png" alt="" class="h-10 w-10 object-contain" />
+                    <img src="/assets/logo-tudor-pop-transparent.png" alt="" class="h-16 w-16 object-contain" />
                     <div>
-                      <p class="font-display text-sm font-black">Tudor Pop</p>
+                      <p class="font-display text-lg font-black">Tudor Pop</p>
                       <p class="text-xs font-bold text-tudor-peach">Démo locale</p>
                     </div>
                   </div>
@@ -161,9 +172,9 @@ const contactGoals = [
                 </div>
               </div>
               <img
-                src="/assets/identite-visuelle.png"
-                alt="Identité visuelle Tudor Pop"
-                class="mt-4 h-40 w-full rounded-md object-cover object-center"
+                src="/assets/pub-1.png"
+                alt="Exemple visuel d'une vitrine web moderne Tudor Pop"
+                class="mt-4 h-44 w-full rounded-md object-cover object-center sm:h-56"
               />
             </div>
           </div>
@@ -173,14 +184,24 @@ const contactGoals = [
 
     <Section id="probleme" tone="soft">
       <Container>
-        <div class="max-w-3xl">
-          <Badge variant="green">Le vrai sujet</Badge>
-          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
-            Vos clients vous regardent déjà en ligne
-          </h2>
-          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
-            Avant d'appeler, réserver ou passer vous voir, vos futurs clients regardent votre image en ligne. Une fiche Google seule ne suffit pas toujours à rassurer, expliquer et donner envie.
-          </p>
+        <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div class="max-w-3xl">
+            <Badge variant="green">Le vrai sujet</Badge>
+            <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+              Vos clients vous regardent déjà en ligne
+            </h2>
+            <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+              Avant d'appeler, réserver ou passer vous voir, vos futurs clients regardent votre image en ligne. Une fiche Google seule ne suffit pas toujours à rassurer, expliquer et donner envie.
+            </p>
+          </div>
+          <Card variant="light" class="overflow-hidden p-4">
+            <img
+              src="/assets/site-internet.png"
+              alt="Illustration d'un site internet clair pour une activité locale"
+              class="h-64 w-full rounded-md object-cover object-center sm:h-80"
+              loading="lazy"
+            />
+          </Card>
         </div>
         <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {problemCards.map((problem) => (
@@ -209,6 +230,14 @@ const contactGoals = [
             <div class="mt-8">
               <Button href="#contact">Voir ce que mon site pourrait donner</Button>
             </div>
+            <Card variant="green" class="mt-8 overflow-hidden p-4">
+              <img
+                src="/assets/la-vitrine-et-les-plus.png"
+                alt="Illustration d'une vitrine web avec ses bénéfices"
+                class="h-56 w-full rounded-md object-cover object-center"
+                loading="lazy"
+              />
+            </Card>
           </div>
           <div class="grid gap-6 sm:grid-cols-2">
             {solutionFeatures.map((feature) => (
@@ -216,11 +245,20 @@ const contactGoals = [
                 <IconFeature icon={feature.icon} title={feature.title} description={feature.description} tone="dark" />
               </Card>
             ))}
+            <Card variant="deep" class="overflow-hidden p-4 sm:col-span-2">
+              <img
+                src="/assets/exemple-cafe-tudor.png"
+                alt="Exemple de direction visuelle pour un café local"
+                class="h-64 w-full rounded-md object-cover object-center"
+                loading="lazy"
+              />
+            </Card>
           </div>
         </div>
       </Container>
     </Section>
 
+    {siteConfig.showClientProjects ? (
     <Section id="exemples" tone="cream">
       <Container>
         <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -233,7 +271,7 @@ const contactGoals = [
               Chaque démonstration part d'un métier, d'une ville et d'un objectif clair : rassurer plus vite et faciliter le contact.
             </p>
           </div>
-          <Button href="/realisations" variant="dark">Toutes les réalisations</Button>
+          <Button href="/realisations" variant="outline">Toutes les réalisations</Button>
         </div>
 
         <div class="mt-10 grid gap-5 lg:grid-cols-3">
@@ -261,17 +299,30 @@ const contactGoals = [
         </div>
       </Container>
     </Section>
+    ) : (
+      <LocalTradesSection />
+    )}
 
     <Section id="methode" tone="soft">
       <Container>
-        <div class="max-w-3xl">
-          <Badge variant="green">Méthode</Badge>
-          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
-            Une méthode simple pour aller vite sans vous perdre
-          </h2>
-          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
-            Pas besoin d'avoir déjà un cahier des charges. On part de votre activité, puis on avance avec une projection concrète.
-          </p>
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div class="max-w-3xl">
+            <Badge variant="green">Méthode</Badge>
+            <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+              Une méthode simple pour aller vite sans vous perdre
+            </h2>
+            <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+              Pas besoin d'avoir déjà un cahier des charges. On part de votre activité, puis on avance avec une projection concrète.
+            </p>
+          </div>
+          <Card variant="light" class="overflow-hidden p-4">
+            <img
+              src="/assets/etapes-du-projet.png"
+              alt="Illustration des étapes d'un projet de site vitrine"
+              class="h-64 w-full rounded-md object-cover object-center sm:h-80"
+              loading="lazy"
+            />
+          </Card>
         </div>
         <div class="mt-12 grid gap-5 lg:grid-cols-5">
           {processSteps.map((step, index) => (
@@ -303,7 +354,9 @@ const contactGoals = [
             <Card variant={plan.highlighted ? "deep" : "light"} interactive class={["flex h-full flex-col", plan.highlighted ? "lg:-translate-y-3" : ""].join(" ")}>
               {plan.highlighted && <Badge variant="peach">Le plus demandé</Badge>}
               <h3 class:list={["mt-4 font-display text-3xl font-black", plan.highlighted ? "text-tudor-cream" : "text-tudor-dark"]}>{plan.name}</h3>
-              <p class:list={["mt-3 leading-7", plan.highlighted ? "text-tudor-cream/76" : "text-tudor-deep/78"]}>{plan.description}</p>
+              <p class:list={["mt-3 leading-7", plan.highlighted ? "text-tudor-cream/78" : "text-tudor-deep/78"]}>{plan.description}</p>
+              <p class:list={["mt-3 text-sm font-extrabold uppercase tracking-[0.14em]", plan.highlighted ? "text-tudor-peach" : "text-tudor-green"]}>{plan.timeEstimate}</p>
+              <p class:list={["mt-3 leading-7", plan.highlighted ? "text-tudor-cream/76" : "text-tudor-deep/76"]}>{plan.positioning}</p>
               <p class:list={["mt-6 font-display text-2xl font-black", plan.highlighted ? "text-tudor-peach" : "text-tudor-green"]}>{plan.price}</p>
               <ul class:list={["mt-6 grid gap-3 text-sm font-bold", plan.highlighted ? "text-tudor-cream/82" : "text-tudor-deep/82"]}>
                 {plan.features.map((feature) => (
@@ -323,9 +376,12 @@ const contactGoals = [
           <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <h3 class="font-display text-2xl font-black text-tudor-dark">Maintenance optionnelle</h3>
-              <p class="mt-2 text-tudor-deep/78">Hébergement, sécurité, petites modifications et suivi technique.</p>
+              <p class="mt-2 text-tudor-deep/78">Suivi simple pour garder votre site propre, disponible et à jour.</p>
+              <ul class="mt-4 flex flex-wrap gap-2">
+                {maintenance.features.map((feature) => <li class="rounded-full bg-white/70 px-3 py-1 text-sm font-bold text-tudor-deep">{feature}</li>)}
+              </ul>
             </div>
-            <p class="font-display text-2xl font-black text-tudor-green">À partir de 49 € / mois</p>
+            <p class="font-display text-2xl font-black text-tudor-green">{maintenance.price}</p>
           </div>
         </Card>
       </Container>
@@ -342,6 +398,20 @@ const contactGoals = [
             <p class="mt-5 text-lg leading-8 text-tudor-cream/82">
               Vous ne payez pas seulement pour du code. Vous investissez dans une meilleure image, plus de confiance et un contact plus évident.
             </p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <img
+                src="/assets/avantages-du-projet.png"
+                alt="Illustration des avantages d'un projet de site vitrine"
+                class="h-48 w-full rounded-md object-cover object-center"
+                loading="lazy"
+              />
+              <img
+                src="/assets/personalisation.png"
+                alt="Illustration de la personnalisation du site selon l'activité"
+                class="h-48 w-full rounded-md object-cover object-center"
+                loading="lazy"
+              />
+            </div>
           </div>
           <div class="grid gap-5 sm:grid-cols-2">
             {differentiators.map((item) => (
@@ -363,6 +433,14 @@ const contactGoals = [
             Ce que votre site doit changer
           </h2>
         </div>
+        <Card variant="light" class="mt-10 overflow-hidden p-4">
+          <img
+            src="/assets/pub-2-avant-apres.png"
+            alt="Illustration avant après d'une présence en ligne modernisée"
+            class="h-64 w-full rounded-md object-cover object-center sm:h-96"
+            loading="lazy"
+          />
+        </Card>
         <div class="mt-10 grid gap-5 lg:grid-cols-2">
           <Card variant="outline">
             <h3 class="font-display text-3xl font-black text-tudor-dark">Avant</h3>
@@ -423,6 +501,12 @@ const contactGoals = [
               <span>LinkedIn : {contact.linkedin}</span>
               <span>Instagram : {contact.instagram}</span>
             </div>
+            <img
+              src="/assets/contact-rapide.png"
+              alt="Illustration d'un contact rapide depuis un site vitrine"
+              class="mt-8 h-64 w-full rounded-md object-cover object-center"
+              loading="lazy"
+            />
           </div>
 
           <Card variant="light" class="p-6 md:p-8">
