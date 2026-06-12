@@ -27,8 +27,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
               Avant d'afficher des références clients publiques, cette page présente les besoins typiques par métier et la manière dont un site peut mieux rassurer, expliquer et déclencher le contact.
             </p>
             <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href="/#contact">Demander ma démo</Button>
-              <Button href="/#offres" variant="outline">Voir les offres</Button>
+              <Button href="/contact">Demander ma démo</Button>
+              <Button href="/offres" variant="outline">Voir les offres</Button>
             </div>
           </div>
 
@@ -87,7 +87,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
                     {trade.highlights.map((highlight) => <Badge variant="peach">{highlight}</Badge>)}
                   </div>
                   <div class="mt-auto pt-6">
-                    <Button href="/#contact" variant="dark" size="sm">{trade.cta}</Button>
+                    <Button href="/contact" variant="dark" size="sm">{trade.cta}</Button>
                   </div>
                 </Card>
               ))}

@@ -1,17 +1,196 @@
 ---
+import Badge from "@components/Badge.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import { pricing } from "@data/pricing";
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Creation de site vitrine - Tudor Pop"
-  description="Creation de sites vitrines modernes pour professionnels locaux avec demo avant engagement, design moderne, SEO local et contact facilite."
+  title="Création site vitrine pour professionnel local — Tudor Pop"
+  description="Création de sites vitrines modernes pour commerces, restaurants, garages et cabinets. Démo avant engagement, design personnalisé, SEO local et mise en ligne incluse."
 >
-  <main class="mx-auto max-w-5xl px-6 py-24">
-    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-green)]">
-      Creation de site vitrine
-    </p>
-    <h1 class="mt-4 text-4xl font-black text-[var(--color-green-dark)]">
-      Une page dediee a structurer dans la prochaine phase
-    </h1>
+  <main>
+    <Section tone="cream" class="surface-grid overflow-hidden">
+      <Container>
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <Badge variant="green">Création site vitrine</Badge>
+            <h1 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-6xl">
+              Un site vitrine qui travaille pour votre activité
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-tudor-deep/80">
+              Je crée des sites vitrines modernes pour les professionnels locaux : garages, restaurants, commerces, cabinets médicaux. Démo concrète avant engagement, design personnalisé, SEO local intégré.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <Button href="/contact">Demander ma démo gratuite</Button>
+              <Button href="/offres" variant="outline">Voir les tarifs</Button>
+            </div>
+          </div>
+          <Card variant="deep" class="relative overflow-hidden p-8">
+            <div
+              class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(255,196,157,0.2),transparent_30%)]"
+            >
+            </div>
+            <div class="relative">
+              <p class="text-sm font-black uppercase tracking-[0.16em] text-tudor-peach">
+                Inclus dans chaque projet
+              </p>
+              <div class="mt-6 grid gap-3">
+                {
+                  [
+                    "Démo avant engagement",
+                    "Design 100% personnalisé",
+                    "Optimisation mobile",
+                    "SEO local intégré",
+                    "Mise en ligne incluse",
+                  ].map((item) => (
+                    <div class="flex items-center gap-3 rounded-lg border border-white/10 bg-tudor-dark/42 px-4 py-3">
+                      <span class="h-2 w-2 shrink-0 rounded-full bg-tudor-peach" />
+                      <span class="text-sm font-bold text-tudor-cream">{item}</span>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </Card>
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="soft">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="green">Pourquoi un site vitrine</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Votre activité mérite mieux qu'une fiche Google
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            Avant d'appeler ou de passer vous voir, vos clients potentiels vous cherchent en ligne. Un site vitrine clair et bien conçu leur donne confiance, explique vos services et facilite le contact.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                title: "Une image professionnelle",
+                text: "Un site modern et soigné renforce votre crédibilité immédiatement, même face à de plus gros acteurs.",
+              },
+              {
+                title: "Des services mieux compris",
+                text: "Chaque service expliqué clairement réduit les malentendus et améliore la qualité des demandes reçues.",
+              },
+              {
+                title: "Un contact facilité",
+                text: "Bouton d'appel, formulaire, itinéraire, horaires — tout ce qu'un client cherche, au bon endroit.",
+              },
+              {
+                title: "Une visibilité locale accrue",
+                text: "Structure SEO pensée pour apparaître dans Google sur des recherches liées à votre ville et votre métier.",
+              },
+              {
+                title: "Plus de confiance",
+                text: "Vos avis, vos réalisations et vos points forts mis en avant pour convaincre avant le premier contact.",
+              },
+              {
+                title: "Un outil qui travaille 24h/24",
+                text: "Votre site répond aux questions de vos clients à toute heure, sans que vous soyez disponible.",
+              },
+            ].map((item) => (
+              <Card interactive>
+                <h3 class="font-display text-lg font-black text-tudor-dark">{item.title}</h3>
+                <p class="mt-3 leading-7 text-tudor-deep/78">{item.text}</p>
+              </Card>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="deep">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="peach">Les offres disponibles</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight md:text-5xl">
+            Des tarifs clairs, sans surprise
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-cream/80">
+            Trois formules selon votre ambition. Dans tous les cas, vous voyez la démo avant de payer.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          {
+            pricing.map((plan) => (
+              <article class="rounded-xl border border-white/12 bg-tudor-dark/42 p-6">
+                <h3 class="font-display text-xl font-black text-tudor-cream">{plan.name}</h3>
+                <p class="mt-1 text-sm font-extrabold text-tudor-peach">{plan.timeEstimate}</p>
+                <p class="mt-3 font-display text-2xl font-black text-tudor-peach">{plan.price}</p>
+                <p class="mt-3 text-sm leading-6 text-tudor-cream/72">{plan.positioning}</p>
+              </article>
+            ))
+          }
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/offres">Voir les détails des offres</Button>
+          <Button href="/contact" variant="secondary">Demander ma démo</Button>
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="cream">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="green">Pour quel type d'activité</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Adapté à votre secteur
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            Chaque site vitrine part de votre métier, de votre ville et de vos objectifs. Pas de template générique.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            [
+              { label: "Garages", href: "/sites-pour-garages", desc: "Services, devis, confiance, localisation." },
+              { label: "Restaurants", href: "/sites-pour-restaurants", desc: "Menu, réservation, photos, ambiance." },
+              { label: "Commerces locaux", href: "/sites-pour-commerces-locaux", desc: "Horaires, services, image, localisation." },
+              { label: "Cabinets médicaux", href: "/sites-pour-cabinets-medicaux", desc: "Soins, RDV, infos pratiques, rassurance." },
+            ].map((item) => (
+              <a
+                href={item.href}
+                class="group rounded-xl border border-tudor-green/14 bg-white/70 p-5 shadow-[0_14px_40px_rgba(6,79,70,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(6,79,70,0.12)] focus-visible:outline-tudor-peach"
+              >
+                <h3 class="font-display text-lg font-black text-tudor-dark transition group-hover:text-tudor-green">
+                  {item.label}
+                </h3>
+                <p class="mt-2 text-sm leading-6 text-tudor-deep/78">{item.desc}</p>
+                <p class="mt-3 text-xs font-black uppercase tracking-[0.14em] text-tudor-peach">
+                  Voir la page →
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="deep">
+      <Container>
+        <Card variant="green" class="grid gap-8 p-8 md:grid-cols-[1fr_auto] md:items-center md:p-10">
+          <div>
+            <Badge variant="peach">Prêt à démarrer ?</Badge>
+            <h2 class="mt-5 font-display text-3xl font-black leading-tight text-tudor-cream md:text-5xl">
+              Voyez votre site avant de décider.
+            </h2>
+            <p class="mt-5 max-w-2xl text-lg leading-8 text-tudor-cream/82">
+              Envoyez-moi le nom de votre activité et votre ville. Je prépare une démo concrète — sans engagement, sans paiement.
+            </p>
+          </div>
+          <Button href="/contact" size="lg">Demander ma démo</Button>
+        </Card>
+      </Container>
+    </Section>
   </main>
 </BaseLayout>

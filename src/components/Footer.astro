@@ -3,46 +3,69 @@ import Button from "@components/Button.astro";
 import Container from "@components/Container.astro";
 import { contact } from "@data/contact";
 
-const footerLinks = [
-  { label: "Création site vitrine", href: "/creation-site-vitrine", key: "footer.links.creation" },
-  { label: "Glossaire", href: "/glossaire", key: "footer.links.glossaire" },
-  { label: "Réalisations", href: "/realisations", key: "footer.links.realisations" },
-  { label: "Garages", href: "/secteurs/garages", key: "footer.links.garages" },
-  { label: "Restaurants", href: "/secteurs/restaurants", key: "footer.links.restaurants" },
-  { label: "Cabinets médicaux", href: "/secteurs/cabinets-medicaux", key: "footer.links.cabinets" },
-  { label: "Contact", href: "/contact", key: "footer.links.contact" },
+const navLinks = [
+  { label: "Accueil", href: "/" },
+  { label: "Offres", href: "/offres" },
+  { label: "Méthode", href: "/methode" },
+  { label: "Glossaire", href: "/glossaire" },
+  { label: "Réalisations", href: "/realisations" },
+  { label: "Contact", href: "/contact" },
+];
+
+const sectorLinks = [
+  { label: "Commerces locaux", href: "/sites-pour-commerces-locaux" },
+  { label: "Restaurants", href: "/sites-pour-restaurants" },
+  { label: "Garages", href: "/sites-pour-garages" },
+  { label: "Cabinets médicaux", href: "/sites-pour-cabinets-medicaux" },
 ];
 ---
 
 <footer class="bg-tudor-dark text-tudor-cream">
   <Container>
-    <div class="grid gap-10 py-14 md:grid-cols-[1.3fr_0.9fr_0.8fr] md:py-20">
+    <div class="grid gap-10 py-14 md:grid-cols-[1.4fr_0.8fr_0.8fr_0.8fr] md:py-20">
+      <!-- Brand -->
       <div>
-        <a href="/" class="inline-flex items-center gap-4 rounded-full focus-visible:outline-tudor-peach" aria-label="Accueil Tudor Pop">
-          <span class="flex h-16 w-16 items-center justify-center rounded-full bg-tudor-cream/10 ring-1 ring-tudor-peach/30">
+        <a
+          href="/"
+          class="inline-flex items-center gap-4 rounded-full focus-visible:outline-tudor-peach"
+          aria-label="Accueil Tudor Pop"
+        >
+          <span
+            class="flex h-16 w-16 items-center justify-center rounded-full bg-tudor-cream/10 ring-1 ring-tudor-peach/30"
+          >
             <img src="/assets/logo-tudor-pop-transparent.png" alt="" class="h-14 w-14 object-contain" />
           </span>
           <span>
             <span class="block font-display text-xl font-black">Tudor Pop</span>
-            <span data-i18n="footer.tagline" class="block text-sm font-bold text-tudor-peach">Sites modernes pour professionnels locaux</span>
+            <span data-i18n="footer.tagline" class="block text-sm font-bold text-tudor-peach">
+              Sites vitrines locaux
+            </span>
           </span>
         </a>
-        <p data-i18n="footer.description" class="mt-5 max-w-md leading-7 text-tudor-cream/76">
+        <p data-i18n="footer.description" class="mt-5 max-w-sm leading-7 text-tudor-cream/76">
           Des vitrines modernes, rapides et claires pour rendre votre activité plus visible, plus crédible et plus facile à contacter.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <Button href="/contact" size="sm"><span data-i18n="footer.cta">Demander ma démo</span></Button>
-          <Button href={`mailto:${contact.email}`} variant="secondary" size="sm"><span data-i18n="footer.emailCta">Envoyer un email</span></Button>
+          <Button href="/contact" size="sm">
+            <span data-i18n="footer.cta">Demander ma démo</span>
+          </Button>
+          <Button href={`mailto:${contact.email}`} variant="secondary" size="sm">
+            <span data-i18n="footer.emailCta">Envoyer un email</span>
+          </Button>
         </div>
       </div>
 
-      <nav aria-label="Liens de pied de page">
-        <h2 data-i18n="footer.navTitle" class="font-display text-base font-black">Navigation</h2>
+      <!-- Navigation -->
+      <nav aria-label="Pages principales">
+        <h2 class="font-display text-base font-black">Pages</h2>
         <ul class="mt-4 grid gap-3">
           {
-            footerLinks.map((link) => (
+            navLinks.map((link) => (
               <li>
-                <a data-i18n={link.key} class="text-sm font-bold text-tudor-cream/76 transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={link.href}>
+                <a
+                  class="text-sm font-bold text-tudor-cream/76 transition hover:text-tudor-peach focus-visible:outline-tudor-peach"
+                  href={link.href}
+                >
                   {link.label}
                 </a>
               </li>
@@ -51,19 +74,70 @@ const footerLinks = [
         </ul>
       </nav>
 
+      <!-- Métiers -->
+      <nav aria-label="Pages par métier">
+        <h2 class="font-display text-base font-black">Métiers</h2>
+        <ul class="mt-4 grid gap-3">
+          {
+            sectorLinks.map((link) => (
+              <li>
+                <a
+                  class="text-sm font-bold text-tudor-cream/76 transition hover:text-tudor-peach focus-visible:outline-tudor-peach"
+                  href={link.href}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Contact -->
       <div>
-        <h2 data-i18n="footer.contactTitle" class="font-display text-base font-black">Contact direct</h2>
+        <h2 data-i18n="footer.contactTitle" class="font-display text-base font-black">
+          Contact direct
+        </h2>
         <address class="mt-4 grid gap-3 not-italic text-sm font-bold text-tudor-cream/76">
-          <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href="tel:+33625664448">{contact.phone}</a>
-          <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={`mailto:${contact.email}`}>{contact.email}</a>
-          <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={`https://www.linkedin.com/in/${contact.linkedin}`}>LinkedIn</a>
-          <a class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach" href={`https://www.instagram.com/${contact.instagram}`}>Instagram</a>
+          <a
+            class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach"
+            href={`tel:${contact.phone.replace(/\s/g, "")}`}
+          >
+            {contact.phone}
+          </a>
+          <a
+            class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach"
+            href={`mailto:${contact.email}`}
+          >
+            {contact.email}
+          </a>
+          <a
+            class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach"
+            href={`https://www.linkedin.com/in/${contact.linkedin}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            class="transition hover:text-tudor-peach focus-visible:outline-tudor-peach"
+            href={`https://www.instagram.com/${contact.instagram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
         </address>
       </div>
     </div>
 
-    <div class="flex flex-col gap-3 border-t border-white/10 py-6 text-sm font-semibold text-tudor-cream/60 md:flex-row md:items-center md:justify-between">
-      <p>© {new Date().getFullYear()} Tudor Pop. <span data-i18n="footer.copyright">Tous droits réservés.</span></p>
+    <div
+      class="flex flex-col gap-3 border-t border-white/10 py-6 text-sm font-semibold text-tudor-cream/60 md:flex-row md:items-center md:justify-between"
+    >
+      <p>
+        © {new Date().getFullYear()} Tudor Pop.
+        <span data-i18n="footer.copyright">Tous droits réservés.</span>
+      </p>
       <p data-i18n="footer.slogan">Une vitrine qui travaille pour vous.</p>
     </div>
   </Container>
