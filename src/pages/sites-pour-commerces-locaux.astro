@@ -1,0 +1,245 @@
+---
+import Badge from "@components/Badge.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Site vitrine pour commerce local — Valoriser votre activité de quartier | Tudor Pop"
+  description="Un site vitrine moderne pour votre commerce local : présenter vos produits et services, afficher vos horaires, rassurer vos clients et être trouvé sur Google."
+>
+  <main>
+    <Section tone="cream" class="surface-grid overflow-hidden">
+      <Container>
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <Badge variant="green">Commerces &amp; boutiques locales</Badge>
+            <h1
+              class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-6xl"
+            >
+              Une image plus professionnelle pour valoriser votre activité de quartier
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-tudor-deep/80">
+              Vos clients vous cherchent en ligne avant de venir. Un site clair avec vos horaires, vos services et vos coordonnées renforce leur confiance et simplifie leur visite.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <Button href="/contact">Demander ma démo</Button>
+              <Button href="/offres" variant="outline">Voir les offres</Button>
+            </div>
+          </div>
+          <Card variant="deep" class="relative overflow-hidden p-8">
+            <div
+              class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(255,196,157,0.2),transparent_30%)]"
+            >
+            </div>
+            <div class="relative">
+              <p class="text-sm font-black uppercase tracking-[0.16em] text-tudor-peach">
+                Ce que vos clients attendent
+              </p>
+              <div class="mt-6 grid gap-3">
+                {
+                  [
+                    "Horaires d'ouverture clairs",
+                    "Services ou produits présentés",
+                    "Adresse et accès facilités",
+                    "Image rassurante et professionnelle",
+                    "Contact simple",
+                  ].map((item) => (
+                    <div class="flex items-center gap-3 rounded-lg border border-white/10 bg-tudor-dark/42 px-4 py-3">
+                      <span class="h-2 w-2 shrink-0 rounded-full bg-tudor-peach" />
+                      <span class="text-sm font-bold text-tudor-cream">{item}</span>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </Card>
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="soft">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="green">Le problème</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Ce qu'un commerce local perd sans site web
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            Même un commerce de proximité est cherché en ligne avant une première visite. Sans présence claire, la concurrence en profite.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                title: "Premiers pas incertains",
+                text: "Un client qui ne trouve pas d'info fiable en ligne hésite ou choisit une autre enseigne.",
+              },
+              {
+                title: "Horaires introuvables",
+                text: "Des horaires absents ou incorrects en ligne génèrent de la frustration et des déplacements inutiles.",
+              },
+              {
+                title: "Services peu visibles",
+                text: "Vos produits ou prestations ne sont pas mis en valeur, et vos points forts restent inconnus.",
+              },
+              {
+                title: "Image datée",
+                text: "Une fiche Google seule ou un site obsolète donne une impression de manque de sérieux.",
+              },
+              {
+                title: "Pas de différenciation",
+                text: "Sans contenu qui vous représente, votre commerce ressemble à tous les autres.",
+              },
+              {
+                title: "Moins de visibilité locale",
+                text: "Google valorise les sites bien structurés dans les résultats de recherche locaux.",
+              },
+            ].map((item) => (
+              <Card interactive>
+                <h3 class="font-display text-lg font-black text-tudor-dark">{item.title}</h3>
+                <p class="mt-3 leading-7 text-tudor-deep/78">{item.text}</p>
+              </Card>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="deep" class="overflow-hidden">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="peach">Ce qu'un site vous apporte</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight md:text-5xl">
+            Votre commerce mérite une vitrine à la hauteur
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-cream/80">
+            Un site bien conçu pour un commerce local, c'est une image plus professionnelle, plus de visites et un contact facilité.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2">
+          {
+            [
+              {
+                title: "Une image professionnelle dès le départ",
+                text: "Photos de votre boutique, de vos produits phares et de votre équipe pour inspirer confiance.",
+              },
+              {
+                title: "Des informations toujours à jour",
+                text: "Horaires, adresse, fermetures exceptionnelles — tout ce que votre client a besoin de savoir.",
+              },
+              {
+                title: "Mettre en valeur vos services",
+                text: "Présenter vos produits, vos spécialités ou vos services pour donner envie de venir.",
+              },
+              {
+                title: "Être trouvé sur Google",
+                text: "Structure SEO pensée pour apparaître sur « [votre commerce] [votre ville] ».",
+              },
+            ].map((item) => (
+              <article class="rounded-xl border border-white/12 bg-tudor-dark/42 p-6">
+                <h3 class="font-display text-lg font-black text-tudor-cream">{item.title}</h3>
+                <p class="mt-3 leading-7 text-tudor-cream/72">{item.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="cream">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="green">Contenu recommandé</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Ce que doit contenir votre site de commerce local
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            Chaque section joue un rôle précis pour informer, rassurer et inciter à la visite.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                num: "01",
+                title: "Présentation claire",
+                text: "Qui vous êtes, ce que vous faites, et pourquoi venir chez vous plutôt qu'ailleurs.",
+              },
+              {
+                num: "02",
+                title: "Vos produits ou services",
+                text: "Présentation de votre offre : gamme, spécialités, services associés.",
+              },
+              {
+                num: "03",
+                title: "Photos de votre boutique",
+                text: "Intérieur, produits, équipe — les visuels rendent votre commerce humain et accueillant.",
+              },
+              {
+                num: "04",
+                title: "Horaires & contact",
+                text: "Jours et heures d'ouverture, numéro de téléphone, email et adresse.",
+              },
+              {
+                num: "05",
+                title: "Localisation",
+                text: "Carte Google Maps intégrée, rue et parking si pertinent.",
+              },
+              {
+                num: "06",
+                title: "Avis clients",
+                text: "Vos meilleurs avis Google visibles sur le site pour rassurer les nouveaux visiteurs.",
+              },
+            ].map((item) => (
+              <Card interactive>
+                <span class="font-display text-sm font-black text-tudor-peach">{item.num}</span>
+                <h3 class="mt-3 font-display text-lg font-black text-tudor-dark">{item.title}</h3>
+                <p class="mt-2 leading-7 text-tudor-deep/78">{item.text}</p>
+              </Card>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="deep">
+      <Container>
+        <Card
+          variant="green"
+          class="grid gap-8 p-8 md:grid-cols-[1fr_auto] md:items-center md:p-10"
+        >
+          <div>
+            <Badge variant="peach">Votre projet</Badge>
+            <h2
+              class="mt-5 font-display text-3xl font-black leading-tight text-tudor-cream md:text-4xl"
+            >
+              Voyez à quoi ressemblerait votre site avant de décider.
+            </h2>
+            <p class="mt-4 max-w-2xl text-lg leading-8 text-tudor-cream/82">
+              Envoyez-moi le nom de votre commerce et votre ville. Je prépare une démo concrète sans engagement.
+            </p>
+          </div>
+          <Button href="/contact" size="lg">Demander ma démo</Button>
+        </Card>
+      </Container>
+    </Section>
+
+    <Section tone="soft">
+      <Container>
+        <p class="text-sm font-extrabold uppercase tracking-[0.14em] text-tudor-green">
+          Autres secteurs
+        </p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <Button href="/sites-pour-garages" variant="outline" size="sm">Garages</Button>
+          <Button href="/sites-pour-restaurants" variant="outline" size="sm">Restaurants</Button>
+          <Button href="/sites-pour-cabinets-medicaux" variant="outline" size="sm">Cabinets médicaux</Button>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>

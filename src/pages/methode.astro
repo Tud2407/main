@@ -1,0 +1,185 @@
+---
+import Badge from "@components/Badge.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const steps = [
+  {
+    num: "01",
+    title: "Analyse de votre activité",
+    description:
+      "Je commence par étudier votre activité en profondeur : fiche Google, avis clients, services proposés, concurrence locale et présence en ligne actuelle. L'objectif est de comprendre ce qui vous distingue et ce que vos clients recherchent vraiment.",
+    detail: "Google Maps, avis, services, photos, concurrence locale.",
+  },
+  {
+    num: "02",
+    title: "Direction visuelle claire",
+    description:
+      "Sur la base de cette analyse, je prépare un message central, une proposition de valeur claire et une structure de contenu adaptée à votre secteur. Vous avez une idée précise de la direction avant la première ligne de code.",
+    detail: "Message, image de marque, structure, contenus utiles.",
+  },
+  {
+    num: "03",
+    title: "Création de la démo",
+    description:
+      "Je crée une première version concrète de votre site. Vous voyez ce que votre vitrine peut devenir, avec de vraies sections, de vrais textes et une vraie mise en forme. Pas de maquette abstraite.",
+    detail: "Site fonctionnel présenté dès la première étape.",
+  },
+  {
+    num: "04",
+    title: "Ajustements ensemble",
+    description:
+      "Vous me donnez votre retour sur la démo. On ajuste les textes, les images, les couleurs, les appels à l'action et tout ce qui doit être affiné. Le nombre d'allers-retours inclus dépend de l'offre choisie.",
+    detail: "Textes, images, couleurs, CTAs selon vos retours.",
+  },
+  {
+    num: "05",
+    title: "Mise en ligne",
+    description:
+      "Une fois validé, je déploie votre site : hébergement rapide, domaine configuré, performance optimisée et sécurité en place. Votre site est prêt à être partagé à vos clients.",
+    detail: "Site rapide, responsive, sécurisé et en ligne.",
+  },
+  {
+    num: "06",
+    title: "Suivi post-lancement",
+    description:
+      "Après la mise en ligne, je reste disponible pour les questions et les petits ajustements. Si vous souhaitez un suivi régulier, la maintenance mensuelle prend le relais pour garder votre site à jour.",
+    detail: "Support disponible, maintenance optionnelle à 49 €/mois.",
+  },
+];
+---
+
+<BaseLayout
+  title="Méthode — Comment se déroule un projet de site vitrine | Tudor Pop"
+  description="Découvrez les 6 étapes d'un projet Tudor Pop : analyse, direction visuelle, démo, ajustements, mise en ligne et suivi. Vous voyez avant de décider."
+>
+  <main>
+    <Section tone="cream" class="surface-grid overflow-hidden">
+      <Container>
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <Badge variant="green">Méthode</Badge>
+            <h1 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-6xl">
+              Une méthode simple pour aller vite sans vous perdre
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-tudor-deep/80">
+              Pas besoin d'avoir un cahier des charges. On part de votre activité, et vous voyez une démo concrète avant de vous engager.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <Button href="#etapes">Voir les étapes</Button>
+              <Button href="/contact" variant="outline">Demander ma démo</Button>
+            </div>
+          </div>
+          <Card variant="light" class="overflow-hidden p-4">
+            <img
+              src="/assets/etapes-du-projet.png"
+              alt="Illustration des étapes d'un projet de site vitrine"
+              class="h-64 w-full rounded-md object-contain bg-tudor-soft sm:h-80"
+              loading="eager"
+            />
+          </Card>
+        </div>
+      </Container>
+    </Section>
+
+    <Section id="etapes" tone="soft">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="green">Les 6 étapes</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Du premier échange à la mise en ligne
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            Chaque étape est claire, courte et orientée vers un résultat concret. Vous n'avez pas à devenir expert pour collaborer efficacement.
+          </p>
+        </div>
+        <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {
+            steps.map((step) => (
+              <Card interactive class="relative">
+                <span class="font-display text-sm font-black text-tudor-peach">{step.num}</span>
+                <h3 class="mt-3 font-display text-xl font-black text-tudor-dark">{step.title}</h3>
+                <p class="mt-3 leading-7 text-tudor-deep/78">{step.description}</p>
+                <p class="mt-4 text-xs font-black uppercase tracking-[0.14em] text-tudor-green">
+                  {step.detail}
+                </p>
+              </Card>
+            ))
+          }
+        </div>
+        <div class="mt-10 flex justify-center">
+          <Button href="/contact" size="lg">Démarrer mon projet</Button>
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="deep">
+      <Container>
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div>
+            <Badge variant="peach">Pourquoi cette méthode</Badge>
+            <h2 class="mt-5 font-display text-4xl font-black leading-tight md:text-5xl">
+              Voir avant de décider
+            </h2>
+            <p class="mt-5 text-lg leading-8 text-tudor-cream/80">
+              La plupart des projets web commencent par un devis aveugle : vous payez avant de voir. Ici, vous voyez d'abord. La démo rend le projet concret, réduit les malentendus et vous permet de prendre une décision éclairée.
+            </p>
+          </div>
+          <div class="grid gap-4">
+            {
+              [
+                {
+                  title: "Pas de surprise sur le résultat",
+                  text: "La démo vous montre exactement à quoi ressemblera votre site.",
+                },
+                {
+                  title: "Pas de jargon technique",
+                  text: "Chaque décision vous est expliquée en langage simple et concret.",
+                },
+                {
+                  title: "Délais respectés",
+                  text: "Les délais annoncés (1–2 j, 3–5 j) sont tenus dans la grande majorité des cas.",
+                },
+                {
+                  title: "Ancré dans votre métier",
+                  text: "Je pars de votre activité réelle, pas d'un template générique.",
+                },
+              ].map((item) => (
+                <article class="flex gap-4 rounded-xl border border-white/12 bg-tudor-dark/42 p-5">
+                  <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-tudor-peach" />
+                  <div>
+                    <h3 class="font-display font-black text-tudor-cream">{item.title}</h3>
+                    <p class="mt-1 text-sm leading-6 text-tudor-cream/72">{item.text}</p>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="soft">
+      <Container>
+        <div class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div class="max-w-2xl">
+            <Badge variant="green">Offres</Badge>
+            <h2 class="mt-4 font-display text-3xl font-black leading-tight text-tudor-dark md:text-4xl">
+              Voir les tarifs et ce qui est inclus
+            </h2>
+            <p class="mt-4 leading-7 text-tudor-deep/80">
+              Essentiel à 390 €, Pro à 990 € ou Premium sur devis — chaque offre correspond à un niveau d'ambition différent.
+            </p>
+          </div>
+          <div class="flex shrink-0 flex-wrap gap-3">
+            <Button href="/offres">Voir les offres</Button>
+            <Button href="/contact" variant="outline">Demander ma démo</Button>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>

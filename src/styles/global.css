@@ -353,6 +353,29 @@ html[data-theme="dark"] .btn-ghost:hover {
   }
 }
 
+/* Form field base — works in both themes */
+.field-input {
+  background: rgba(255, 247, 239, 0.88);
+  color: var(--color-green-dark);
+  border: 1px solid rgba(14, 143, 120, 0.2);
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: var(--color-green);
+}
+
+html[data-theme="dark"] .field-input {
+  background: rgba(255, 247, 239, 0.08);
+  color: var(--page-text);
+  border-color: var(--border-soft);
+}
+
+html[data-theme="dark"] .field-input:focus {
+  border-color: var(--color-peach);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

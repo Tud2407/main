@@ -1,0 +1,245 @@
+---
+import Badge from "@components/Badge.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Site vitrine pour restaurant — Donner envie et faciliter la réservation | Tudor Pop"
+  description="Un site vitrine moderne pour votre restaurant : présenter votre menu, afficher vos horaires, faciliter les réservations et être trouvé sur Google dans votre ville."
+>
+  <main>
+    <Section tone="cream" class="surface-grid overflow-hidden">
+      <Container>
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <Badge variant="green">Restaurants &amp; cafés</Badge>
+            <h1
+              class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-6xl"
+            >
+              Un site vitrine qui donne envie de réserver ou de passer vous voir
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-tudor-deep/80">
+              Avant de choisir un restaurant, vos clients regardent votre présence en ligne : photos, menu, horaires et avis. Un site bien pensé fait la différence face à vos concurrents.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <Button href="/contact">Demander ma démo</Button>
+              <Button href="/offres" variant="outline">Voir les offres</Button>
+            </div>
+          </div>
+          <Card variant="deep" class="relative overflow-hidden p-8">
+            <div
+              class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(255,196,157,0.2),transparent_30%)]"
+            >
+            </div>
+            <div class="relative">
+              <p class="text-sm font-black uppercase tracking-[0.16em] text-tudor-peach">
+                Ce que vos clients cherchent
+              </p>
+              <div class="mt-6 grid gap-3">
+                {
+                  [
+                    "Photos de vos plats et de l'ambiance",
+                    "Menu complet et accessible",
+                    "Réservation facile",
+                    "Horaires et adresse visibles",
+                    "Avis clients mis en avant",
+                  ].map((item) => (
+                    <div class="flex items-center gap-3 rounded-lg border border-white/10 bg-tudor-dark/42 px-4 py-3">
+                      <span class="h-2 w-2 shrink-0 rounded-full bg-tudor-peach" />
+                      <span class="text-sm font-bold text-tudor-cream">{item}</span>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </Card>
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="soft">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="green">Le problème</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Ce qui fait perdre des clients avant même qu'ils viennent
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            La décision de venir dans un restaurant se prend souvent en quelques secondes en ligne. Si votre image n'est pas à la hauteur, le choix se porte sur un concurrent.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                title: "Pas de photos attrayantes",
+                text: "Sans visuels de qualité, l'envie ne prend pas. Le client choisit ailleurs.",
+              },
+              {
+                title: "Menu introuvable",
+                text: "Un menu non lisible sur mobile ou absent, c'est un client qui raccroche.",
+              },
+              {
+                title: "Réservation compliquée",
+                text: "Appeler pour réserver en 2024 est un frein. Un bouton simple change tout.",
+              },
+              {
+                title: "Horaires incertains",
+                text: "Des horaires mal affichés génèrent de la frustration et des mauvais avis.",
+              },
+              {
+                title: "Ambiance mal transmise",
+                text: "Votre personnalité et l'atmosphère de votre établissement ne transparaissent pas.",
+              },
+              {
+                title: "Visibilité locale faible",
+                text: "Sans site structuré, vous êtes absent des recherches Google de votre quartier.",
+              },
+            ].map((item) => (
+              <Card interactive>
+                <h3 class="font-display text-lg font-black text-tudor-dark">{item.title}</h3>
+                <p class="mt-3 leading-7 text-tudor-deep/78">{item.text}</p>
+              </Card>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="deep" class="overflow-hidden">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="peach">Ce qu'un site vous apporte</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight md:text-5xl">
+            Votre restaurant mérite une vitrine à sa hauteur
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-cream/80">
+            Un site bien conçu pour un restaurant, c'est plus de réservations, une meilleure image et une présence locale forte sur Google.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2">
+          {
+            [
+              {
+                title: "Transmettre votre ambiance",
+                text: "Photos de salle, de plats et d'équipe pour donner envie avant même d'entrer.",
+              },
+              {
+                title: "Menu en ligne accessible",
+                text: "Menu complet, clair et lisible sur mobile, mis à jour facilement.",
+              },
+              {
+                title: "Faciliter les réservations",
+                text: "Bouton de réservation ou lien vers TheFork/Resy/votre système habituel.",
+              },
+              {
+                title: "Être trouvé sur Google",
+                text: "Structure SEO pensée pour apparaître sur « restaurant [votre ville] ».",
+              },
+            ].map((item) => (
+              <article class="rounded-xl border border-white/12 bg-tudor-dark/42 p-6">
+                <h3 class="font-display text-lg font-black text-tudor-cream">{item.title}</h3>
+                <p class="mt-3 leading-7 text-tudor-cream/72">{item.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="cream">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="green">Contenu recommandé</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Ce que doit contenir votre site de restaurant
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            Chaque section joue un rôle précis pour donner envie, informer et faciliter la réservation.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                num: "01",
+                title: "Accroche et ambiance",
+                text: "Un visuel fort, votre type de cuisine et un bouton de réservation immédiatement visible.",
+              },
+              {
+                num: "02",
+                title: "Le menu",
+                text: "Entrées, plats, desserts, menus du jour. Clair, lisible sur mobile et facile à mettre à jour.",
+              },
+              {
+                num: "03",
+                title: "Photos de l'établissement",
+                text: "Salle, plats emblématiques, cuisine ou équipe. Les visuels déclenchent l'envie.",
+              },
+              {
+                num: "04",
+                title: "Réservation et commande",
+                text: "Bouton de réservation, lien vers votre plateforme ou formulaire selon votre organisation.",
+              },
+              {
+                num: "05",
+                title: "Horaires & adresse",
+                text: "Horaires d'ouverture, adresse, carte Google Maps et informations pratiques.",
+              },
+              {
+                num: "06",
+                title: "Avis et points forts",
+                text: "Vos meilleurs avis Google et ce qui vous différencie des autres établissements.",
+              },
+            ].map((item) => (
+              <Card interactive>
+                <span class="font-display text-sm font-black text-tudor-peach">{item.num}</span>
+                <h3 class="mt-3 font-display text-lg font-black text-tudor-dark">{item.title}</h3>
+                <p class="mt-2 leading-7 text-tudor-deep/78">{item.text}</p>
+              </Card>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="deep">
+      <Container>
+        <Card
+          variant="green"
+          class="grid gap-8 p-8 md:grid-cols-[1fr_auto] md:items-center md:p-10"
+        >
+          <div>
+            <Badge variant="peach">Votre projet</Badge>
+            <h2
+              class="mt-5 font-display text-3xl font-black leading-tight text-tudor-cream md:text-4xl"
+            >
+              Voyez à quoi ressemblerait votre site avant de décider.
+            </h2>
+            <p class="mt-4 max-w-2xl text-lg leading-8 text-tudor-cream/82">
+              Envoyez-moi le nom de votre restaurant et votre ville. Je prépare une démo concrète sans engagement.
+            </p>
+          </div>
+          <Button href="/contact" size="lg">Demander ma démo</Button>
+        </Card>
+      </Container>
+    </Section>
+
+    <Section tone="soft">
+      <Container>
+        <p class="text-sm font-extrabold uppercase tracking-[0.14em] text-tudor-green">
+          Autres secteurs
+        </p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <Button href="/sites-pour-garages" variant="outline" size="sm">Garages</Button>
+          <Button href="/sites-pour-commerces-locaux" variant="outline" size="sm">Commerces locaux</Button>
+          <Button href="/sites-pour-cabinets-medicaux" variant="outline" size="sm">Cabinets médicaux</Button>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>

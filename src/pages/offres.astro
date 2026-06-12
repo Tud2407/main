@@ -1,0 +1,260 @@
+---
+import Badge from "@components/Badge.astro";
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import { maintenance, pricing } from "@data/pricing";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Offres et tarifs — Sites vitrines pour professionnels locaux | Tudor Pop"
+  description="Essentiel 390 €, Pro 990 €, Premium sur devis. Découvrez les offres de création de site vitrine avec démo avant engagement, inclusions détaillées et délais annoncés."
+>
+  <main>
+    <Section tone="cream" class="surface-grid overflow-hidden">
+      <Container>
+        <Badge variant="green">Tarifs et offres</Badge>
+        <h1 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-6xl">
+          Une offre claire pour chaque projet
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-tudor-deep/80">
+          Trois niveaux d'ambition, un même principe : vous voyez la démo avant de vous engager. Les prix sont fixes, les inclusions sont transparentes.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="#offres">Voir les offres</Button>
+          <Button href="/contact" variant="outline">Demander ma démo</Button>
+        </div>
+      </Container>
+    </Section>
+
+    <Section id="offres" tone="soft">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="green">Formules disponibles</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Des formules adaptées à votre activité
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-deep/80">
+            Que vous partiez de zéro ou que vous souhaitiez refondre un site existant, il y a une offre qui correspond à votre situation.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          {
+            pricing.map((plan) => (
+              <Card
+                variant={plan.highlighted ? "deep" : "light"}
+                class={["flex h-full flex-col", plan.highlighted ? "lg:-translate-y-3" : ""].join(" ")}
+              >
+                {plan.highlighted && <Badge variant="peach">Le plus demandé</Badge>}
+                <h2
+                  class:list={[
+                    "mt-4 font-display text-3xl font-black",
+                    plan.highlighted ? "text-tudor-cream" : "text-tudor-dark",
+                  ]}
+                >
+                  {plan.name}
+                </h2>
+                <p
+                  class:list={[
+                    "mt-3 leading-7",
+                    plan.highlighted ? "text-tudor-cream/78" : "text-tudor-deep/78",
+                  ]}
+                >
+                  {plan.description}
+                </p>
+                <p
+                  class:list={[
+                    "mt-3 text-sm font-extrabold uppercase tracking-[0.14em]",
+                    plan.highlighted ? "text-tudor-peach" : "text-tudor-green",
+                  ]}
+                >
+                  {plan.timeEstimate}
+                </p>
+                <p
+                  class:list={[
+                    "mt-3 leading-7",
+                    plan.highlighted ? "text-tudor-cream/76" : "text-tudor-deep/76",
+                  ]}
+                >
+                  {plan.positioning}
+                </p>
+                <p
+                  class:list={[
+                    "mt-6 font-display text-3xl font-black",
+                    plan.highlighted ? "text-tudor-peach" : "text-tudor-green",
+                  ]}
+                >
+                  {plan.price}
+                </p>
+                <ul
+                  class:list={[
+                    "mt-6 grid gap-3 text-sm font-bold",
+                    plan.highlighted ? "text-tudor-cream/82" : "text-tudor-deep/82",
+                  ]}
+                >
+                  {plan.features.map((feature) => (
+                    <li class="flex gap-3">
+                      <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-tudor-peach" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div class="mt-auto pt-8">
+                  <Button
+                    href="/contact"
+                    variant={plan.highlighted ? "primary" : "dark"}
+                    class="w-full"
+                  >
+                    Demander ma démo
+                  </Button>
+                </div>
+              </Card>
+            ))
+          }
+        </div>
+
+        <Card variant="outline" class="mt-6">
+          <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <Badge variant="green">Option</Badge>
+              <h3 class="mt-3 font-display text-2xl font-black text-tudor-dark">Maintenance optionnelle</h3>
+              <p class="mt-2 text-tudor-deep/78">
+                Suivi simple pour garder votre site propre, disponible et à jour.
+              </p>
+              <ul class="mt-4 flex flex-wrap gap-2">
+                {
+                  maintenance.features.map((feature) => (
+                    <li class="rounded-full bg-white/70 px-3 py-1 text-sm font-bold text-tudor-deep">
+                      {feature}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <p class="shrink-0 font-display text-2xl font-black text-tudor-green">{maintenance.price}</p>
+          </div>
+        </Card>
+      </Container>
+    </Section>
+
+    <Section tone="deep">
+      <Container>
+        <div class="max-w-3xl">
+          <Badge variant="peach">Ce qui est toujours inclus</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight md:text-5xl">
+            Quel que soit le forfait choisi
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-tudor-cream/80">
+            Tous les projets partagent les mêmes garanties de base — sans supplément.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              {
+                title: "Démo avant engagement",
+                text: "Vous voyez une première projection concrète de votre site avant de valider et de payer.",
+              },
+              {
+                title: "Design personnalisé",
+                text: "Pas de template générique. Le design part de votre activité, votre ville et vos objectifs.",
+              },
+              {
+                title: "Optimisation mobile",
+                text: "Votre site est parfait sur smartphone, tablette et ordinateur.",
+              },
+              {
+                title: "SEO local",
+                text: "Structure pensée pour être trouvé sur Google dans votre ville.",
+              },
+              {
+                title: "Mise en ligne incluse",
+                text: "Déploiement sur Netlify ou équivalent, domaine configuré si besoin.",
+              },
+              {
+                title: "Accompagnement clair",
+                text: "Je traduis les aspects techniques en langage simple tout au long du projet.",
+              },
+            ].map((item) => (
+              <article class="rounded-xl border border-white/12 bg-tudor-dark/42 p-6">
+                <h3 class="font-display text-lg font-black text-tudor-cream">{item.title}</h3>
+                <p class="mt-3 leading-7 text-tudor-cream/72">{item.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="cream">
+      <Container width="lg">
+        <div class="max-w-3xl">
+          <Badge variant="green">Questions fréquentes sur les offres</Badge>
+          <h2 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Ce que vous voulez savoir avant de choisir
+          </h2>
+        </div>
+        <div class="mt-10 grid gap-4">
+          {
+            [
+              {
+                q: "Comment fonctionne la démo ?",
+                a: "Avant tout engagement, je crée une première projection de votre site basée sur votre activité, vos avis et vos besoins. Vous la voyez, vous validez ou non. Aucun paiement avant cette étape.",
+              },
+              {
+                q: "Quelle est la différence entre Essentiel et Pro ?",
+                a: "L'Essentiel convient pour lancer une présence simple et crédible rapidement. Le Pro permet un site plus structuré : plusieurs sections, une galerie, une FAQ et un formulaire de contact complet. Le Pro est recommandé si votre activité mérite une vitrine plus argumentée.",
+              },
+              {
+                q: "Le Premium est-il vraiment sur devis ?",
+                a: "Oui. Le Premium correspond à des projets plus complexes : plusieurs pages dédiées, stratégie de positionnement, copywriting, SEO avancé, intégration d'outils externes. Je vous propose un devis personnalisé selon le périmètre défini ensemble.",
+              },
+              {
+                q: "Puis-je modifier mon site après la livraison ?",
+                a: "Les modifications incluses sont précisées dans chaque offre (1 aller-retour pour Essentiel, 2 pour Pro). Au-delà, des modifications ponctuelles sont facturables, ou vous pouvez opter pour la maintenance mensuelle.",
+              },
+              {
+                q: "La maintenance est-elle obligatoire ?",
+                a: "Non. La maintenance est entièrement optionnelle. Elle est utile si vous souhaitez un suivi régulier, des petites modifications fréquentes ou une garantie de disponibilité technique.",
+              },
+              {
+                q: "Quels sont les délais réels ?",
+                a: "L'Essentiel est livré en 1 à 2 jours, le Pro en 3 à 5 jours. Ces délais sont tenus dans la grande majorité des cas. Le Premium dépend du périmètre défini ensemble et est estimé lors du devis.",
+              },
+            ].map((item) => (
+              <details class="group rounded-lg border border-tudor-green/16 bg-white/74 p-5 shadow-[0_14px_40px_rgba(6,79,70,0.06)]">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-black text-tudor-dark focus-visible:outline-tudor-peach [&::-webkit-details-marker]:hidden">
+                  {item.q}
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-tudor-peach text-tudor-dark transition group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p class="mt-4 max-w-3xl leading-7 text-tudor-deep/78">{item.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section tone="deep">
+      <Container>
+        <Card variant="green" class="grid gap-8 p-8 md:grid-cols-[1fr_auto] md:items-center md:p-10">
+          <div>
+            <Badge variant="peach">Prêt à démarrer</Badge>
+            <h2 class="mt-5 font-display text-3xl font-black leading-tight text-tudor-cream md:text-5xl">
+              Commencez par une démo sans engagement.
+            </h2>
+            <p class="mt-5 max-w-2xl text-lg leading-8 text-tudor-cream/82">
+              Envoyez-moi le nom de votre activité et votre ville. Je reviens rapidement avec une première projection concrète.
+            </p>
+          </div>
+          <Button href="/contact" size="lg">Demander ma démo</Button>
+        </Card>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>

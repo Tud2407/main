@@ -1,0 +1,87 @@
+---
+import Badge from "@components/Badge.astro";
+import Button from "@components/Button.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import { contact } from "@data/contact";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Demande envoyée — Merci ! | Tudor Pop"
+  description="Votre demande a bien été envoyée. Tudor Pop vous contactera rapidement pour discuter de votre projet de site vitrine."
+>
+  <main>
+    <Section tone="cream" class="surface-grid overflow-hidden">
+      <Container>
+        <div class="mx-auto max-w-2xl py-10 text-center">
+          <div
+            class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-tudor-peach text-tudor-dark shadow-[0_12px_40px_rgba(255,196,157,0.5)]"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="h-10 w-10 fill-none stroke-current stroke-[2.5]"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"
+              ></polyline>
+            </svg>
+          </div>
+
+          <Badge variant="green" class="mt-8">Message envoyé</Badge>
+          <h1 class="mt-5 font-display text-4xl font-black leading-tight text-tudor-dark md:text-5xl">
+            Merci, votre demande est bien reçue !
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-tudor-deep/80">
+            Je reviens vers vous rapidement — généralement dans la journée — pour discuter de votre projet et vous montrer ce qu'on peut créer ensemble.
+          </p>
+
+          <div class="mt-8 rounded-xl border border-tudor-green/14 bg-white/80 p-6 text-left shadow-[0_14px_40px_rgba(6,79,70,0.06)]">
+            <p class="font-extrabold text-tudor-dark">Si vous avez besoin d'une réponse urgente :</p>
+            <div class="mt-3 grid gap-2 text-sm font-bold text-tudor-deep/80">
+              <a
+                href="tel:+33625664448"
+                class="flex items-center gap-2 transition hover:text-tudor-green"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 fill-none stroke-current stroke-2"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                </svg>
+                {contact.phone}
+              </a>
+              <a
+                href={`mailto:${contact.email}`}
+                class="flex items-center gap-2 transition hover:text-tudor-green"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 fill-none stroke-current stroke-2"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                  <polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round"
+                  ></polyline>
+                </svg>
+                {contact.email}
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Button href="/">Retour à l'accueil</Button>
+            <Button href="/offres" variant="outline">Voir les offres</Button>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>

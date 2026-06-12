@@ -3,12 +3,18 @@ import Button from "@components/Button.astro";
 import Container from "@components/Container.astro";
 
 const navItems = [
-  { key: "nav.home", label: "Accueil", href: "/" },
-  { key: "nav.examples", label: "Exemples", href: "/#exemples" },
-  { key: "nav.offers", label: "Offres", href: "/#offres" },
-  { key: "nav.method", label: "Méthode", href: "/#methode" },
-  { key: "nav.faq", label: "FAQ", href: "/#faq" },
-  { key: "nav.contact", label: "Contact", href: "/contact" },
+  { label: "Accueil", href: "/" },
+  { label: "Offres", href: "/offres" },
+  { label: "Méthode", href: "/methode" },
+  { label: "Glossaire", href: "/glossaire" },
+  { label: "Contact", href: "/contact" },
+];
+
+const sectorItems = [
+  { label: "Commerces locaux", href: "/sites-pour-commerces-locaux" },
+  { label: "Restaurants", href: "/sites-pour-restaurants" },
+  { label: "Garages", href: "/sites-pour-garages" },
+  { label: "Cabinets médicaux", href: "/sites-pour-cabinets-medicaux" },
 ];
 ---
 
@@ -29,10 +35,55 @@ const navItems = [
 
       <nav class="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
         {
-          navItems.map((item) => (
+          navItems.slice(0, 2).map((item) => (
             <a
               href={item.href}
-              data-i18n={item.key}
+              class="rounded-full px-4 py-2 text-sm font-extrabold text-tudor-deep transition hover:bg-tudor-green/10 hover:text-tudor-dark focus-visible:outline-tudor-peach"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+
+        <!-- Métiers dropdown -->
+        <div class="group relative">
+          <button
+            type="button"
+            class="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-extrabold text-tudor-deep transition hover:bg-tudor-green/10 hover:text-tudor-dark focus-visible:outline-tudor-peach"
+            aria-haspopup="true"
+          >
+            Métiers
+            <svg
+              class="h-3.5 w-3.5 transition duration-200 group-hover:rotate-180"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="invisible absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div class="min-w-[200px] overflow-hidden rounded-xl border border-tudor-green/14 bg-tudor-cream shadow-[0_20px_60px_rgba(3,59,53,0.18)]">
+              {
+                sectorItems.map((item) => (
+                  <a
+                    href={item.href}
+                    class="block px-5 py-3 text-sm font-extrabold text-tudor-deep transition hover:bg-tudor-green/10 hover:text-tudor-dark focus-visible:outline-tudor-peach"
+                  >
+                    {item.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        {
+          navItems.slice(2).map((item) => (
+            <a
+              href={item.href}
               class="rounded-full px-4 py-2 text-sm font-extrabold text-tudor-deep transition hover:bg-tudor-green/10 hover:text-tudor-dark focus-visible:outline-tudor-peach"
             >
               {item.label}
@@ -68,10 +119,40 @@ const navItems = [
           </div>
           <nav class="grid gap-1" aria-label="Navigation mobile">
             {
-              navItems.map((item) => (
+              navItems.slice(0, 2).map((item) => (
                 <a
                   href={item.href}
-                  data-i18n={item.key}
+                  class="rounded-md px-4 py-3 font-extrabold text-tudor-deep transition hover:bg-tudor-green/10 hover:text-tudor-dark focus-visible:outline-tudor-peach"
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+            <!-- Métiers section mobile -->
+            <details class="group/sectors rounded-md">
+              <summary class="flex cursor-pointer list-none items-center justify-between rounded-md px-4 py-3 font-extrabold text-tudor-deep transition hover:bg-tudor-green/10 hover:text-tudor-dark [&::-webkit-details-marker]:hidden">
+                <span>Métiers</span>
+                <svg class="h-4 w-4 transition group-open/sectors:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <div class="ml-4 mt-1 grid gap-1 border-l-2 border-tudor-green/20 pl-3">
+                {
+                  sectorItems.map((item) => (
+                    <a
+                      href={item.href}
+                      class="rounded-md px-3 py-2.5 text-sm font-extrabold text-tudor-deep/80 transition hover:bg-tudor-green/10 hover:text-tudor-dark"
+                    >
+                      {item.label}
+                    </a>
+                  ))
+                }
+              </div>
+            </details>
+            {
+              navItems.slice(2).map((item) => (
+                <a
+                  href={item.href}
                   class="rounded-md px-4 py-3 font-extrabold text-tudor-deep transition hover:bg-tudor-green/10 hover:text-tudor-dark focus-visible:outline-tudor-peach"
                 >
                   {item.label}

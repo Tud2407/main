@@ -618,38 +618,38 @@ const contactGoals = [
               <div class="grid gap-4 md:grid-cols-2">
                 <label class="block">
                   <span data-i18n="contact.fields.name" class="text-sm font-extrabold text-tudor-dark">Nom</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="text" name="nom" autocomplete="name" required />
+                  <input class="field-input mt-2 min-h-12 w-full rounded-md px-4" type="text" name="nom" autocomplete="name" required />
                 </label>
                 <label class="block">
                   <span data-i18n="contact.fields.activity" class="text-sm font-extrabold text-tudor-dark">Activité</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="text" name="activite" required />
+                  <input class="field-input mt-2 min-h-12 w-full rounded-md px-4" type="text" name="activite" required />
                 </label>
                 <label class="block">
                   <span data-i18n="contact.fields.city" class="text-sm font-extrabold text-tudor-dark">Ville</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="text" name="ville" required />
+                  <input class="field-input mt-2 min-h-12 w-full rounded-md px-4" type="text" name="ville" required />
                 </label>
                 <label class="block">
                   <span data-i18n="contact.fields.email" class="text-sm font-extrabold text-tudor-dark">Email</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="email" name="email" autocomplete="email" required />
+                  <input class="field-input mt-2 min-h-12 w-full rounded-md px-4" type="email" name="email" autocomplete="email" required />
                 </label>
                 <label class="block">
                   <span data-i18n="contact.fields.phone" class="text-sm font-extrabold text-tudor-dark">Téléphone</span>
-                  <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="tel" name="telephone" autocomplete="tel" />
+                  <input class="field-input mt-2 min-h-12 w-full rounded-md px-4" type="tel" name="telephone" autocomplete="tel" />
                 </label>
                 <label class="block">
                   <span data-i18n="contact.fields.goal" class="text-sm font-extrabold text-tudor-dark">Objectif principal</span>
-                  <select class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" name="objectif">
+                  <select class="field-input mt-2 min-h-12 w-full rounded-md px-4" name="objectif">
                     {contactGoals.map((goal, i) => <option data-i18n={`contact.goals.${i}`}>{goal}</option>)}
                   </select>
                 </label>
               </div>
               <label class="mt-4 block">
                 <span data-i18n="contact.fields.currentSite" class="text-sm font-extrabold text-tudor-dark">Site actuel ou fiche Google</span>
-                <input class="mt-2 min-h-12 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 text-tudor-dark focus:border-tudor-green" type="url" name="site-actuel" />
+                <input class="field-input mt-2 min-h-12 w-full rounded-md px-4" type="url" name="site-actuel" />
               </label>
               <label class="mt-4 block">
                 <span data-i18n="contact.fields.message" class="text-sm font-extrabold text-tudor-dark">Message</span>
-                <textarea class="mt-2 w-full rounded-md border border-tudor-green/20 bg-tudor-cream/90 px-4 py-3 text-tudor-dark focus:border-tudor-green" name="message" rows="5"></textarea>
+                <textarea class="field-input mt-2 w-full rounded-md px-4 py-3" name="message" rows="5"></textarea>
               </label>
               <p data-i18n="contact.fields.hint" class="mt-4 text-sm font-bold leading-6 text-tudor-deep/72">
                 Pas besoin d'avoir déjà un cahier des charges. Envoyez-moi simplement votre activité et votre ville.
